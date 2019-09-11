@@ -5,24 +5,14 @@ class Input extends Component {
     super(props);
     this.state = {};
     this.openNav = this.openNav.bind(this);
-    //this.closeNav = this.closeNav.bind(this);
   }
-
-  componentDidMount() {
-    document.addEventListener("click", this.closeNav);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("click", this.closeNav);
-  }
-
   openNav() {
     const style = { width: 550 };
     this.setState({ style });
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    document.addEventListener("click", this.closeNav);
   }
-
+  handleChange = () => {
+    this.setState({ showComponet: !this.state.showComponet });
+  };
 
   render() {
     return (
@@ -35,27 +25,68 @@ class Input extends Component {
             placeholder="Click here to for input text"
           ></input>
         </div>
-        <div ref="snav" className="overlay" style={this.state.style}>
+        <div className="overlay" style={this.state.style}>
           <h2>Fill the form</h2>
-          <label>
-            Some text:
+          <label className="label">
+            Label:
             <input type="text"></input>
           </label>
-          <br></br>
-          <br></br>
-          <form name="inputForm">
-            <input type="radio" name="input" /> Textfield
-            <input type="radio" name="input" /> Checkbox
-            <input type="radio" name="input" /> Select
-            <input type="radio" name="input" /> Radios
+          <form className="inputForm">
+            <label>
+              <input
+                type="radio"
+                name="input"
+                onChange={this.handleChange}
+                checked={!this.state.showComponet}
+              />{" "}
+              Textfield
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="input"
+                onChange={this.handleChange}
+                checked={!this.state.showComponet}
+              />{" "}
+              Checkbox
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="input"
+                onChange={this.handleChange}
+                checked={this.state.showComponet}
+              />{" "}
+              Select
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="input"
+                onChange={this.handleChange}
+                checked={this.state.showComponet}
+              />{" "}
+              Radios
+            </label>
+            {this.state.showComponet ? (
+              <div>
+                {" "}
+                <label>ADD MORE OPTIONS</label>
+                <form className="inputForm">
+                  <label>
+                    Value
+                    <input type="text" name="input" />
+                  </label>
+                  <button className="button-small">ADD</button>
+                  <button className="button-small">EDIT</button>
+                  <button className="button-small">DELETE</button>
+                </form>
+              </div>
+            ) : null}
           </form>
-          <br></br>
-          <br></br>
-          <button className="button">Create</button>
-          <button className="button">Edit</button>
-          <button className="button">Delete</button>
+          <button className="button">Save</button>
+          <button className="button">Cancel</button>
         </div>
-        <div className="list-group">{this.props.children}</div>
       </div>
     );
   }

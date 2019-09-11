@@ -1,14 +1,10 @@
-import React from 'react';
-import Input from "./components_redux/Input"
-import Form from "./components_redux/Form"
+import React from "react";
+import Input from "./components_redux/Input";
 
 function App() {
   return (
     <div>
-      <Input/>
-      <br></br>
-      
-
+      <Input />
     </div>
   );
 }

@@ -24,9 +24,10 @@ code {
   width: 350px;
   margin-top: 100px;
 }
-.form-input {
+.inputForm {
   text-align: center;
   outline: 2px;
+  margin: 18px 14px;
 }
 .button{
   background-color: #008CBA;
@@ -36,13 +37,14 @@ code {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
+  margin: 14px 12px;
   font-size: 16px;
 }
 .overlay {
   height: 100%;
   width: 0;
   position: center;
+  margin: 150px;
   z-index: 1;
   text-align: center;
   background-color: rgb(0,0,0);
