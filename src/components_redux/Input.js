@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Radios from "./Radios";
 
 class Input extends Component {
   constructor(props) {
@@ -20,7 +21,11 @@ class Input extends Component {
     return this.state.values.map((el, i) => (
       <div key={i}>
         <label>Value</label>
-        <input type="text" />
+        <input
+          type="text"
+          defaultValue={el || ""}
+          onChange={this.state.handleChange}
+        />
         <input type="button" value="DELETE" onClick={this.removeClick} />
       </div>
     ));
@@ -29,7 +34,7 @@ class Input extends Component {
   handleChange(i, event) {
     let values = [...this.state.values];
     values[i] = event.target.value;
-    this.setState({ values });
+    this.setState({ value: event.target.value });
   }
   addClick = () => {
     this.setState(prevState => ({ values: [...prevState.values, ""] }));
@@ -55,50 +60,14 @@ class Input extends Component {
             placeholder="Click here to for input text"
           ></input>
         </div>
-        <div className="overlay">
+        <div className="overlay" style={this.state.style}>
           <h2>Fill the form</h2>
           <label className="label">
             Label:
             <input type="text"></input>
           </label>
-          <form className="inputForm">
-            <label>Type</label>
-            <label>
-              <input
-                type="radio"
-                name="input"
-                onChange={this.handleChange}
-                checked={!this.state.showComponet}
-              />
-              Textfield
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="input"
-                onChange={this.handleChange}
-                checked={!this.state.showComponet}
-              />
-              Checkbox
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="input"
-                onChange={this.handleChange}
-                checked={this.state.showComponet}
-              />
-              Select
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="input"
-                onChange={this.handleChange}
-                checked={this.state.showComponet}
-              />
-              Radios
-            </label>
+          <div className="inputForm">
+            <Radios />
             {this.state.showComponet ? (
               <div>
                 <label>ADD MORE OPTIONS</label>
@@ -106,17 +75,26 @@ class Input extends Component {
                   {this.createUI()}
                   <label>
                     Value
-                    <input type="text" name="input" />
+                    <input
+                      type="text"
+                      name="input"
+                      onChange={this.state.handleChange}
+                    />
                   </label>
                   <button className="button-small" onClick={this.addClick}>
                     ADD
                   </button>
-                  <button className="button-small">DELETE</button>
+                  <button className="button-small" onClick={this.removeClick}>
+                    DELETE
+                  </button>
                 </form>
               </div>
             ) : null}
-          </form>
-          <button className="button">Save</button>
+          </div>
+          <textarea></textarea>
+          <button className="button" onClick={this.handleSubmit}>
+            Save
+          </button>
           <button className="button">Cancel</button>
         </div>
       </div>
