@@ -4,25 +4,32 @@ export default class Radios extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: " "
+      type: "text"
+    };
+    const options = {
+      text: "Textfield",
+      radios: "Radios",
+      checkbox: "CheckBox",
+      select: "Select",
+      name: "input",
+      type: "radio"
     };
   }
-  optionsShow = () => {
-    this.setState({ showComponet: !this.state.showComponet });
-  };
   radioChange = event => {
     this.setState({
-      type: event.target.name
+      type: event.target.value
     });
   };
   render() {
     return (
       <div>
-        <label>Type</label>
+        <label>{this.props.title}</label>
+        
         <label>
           <input
             type="radio"
-            name="text"
+            name="input"
+            value="text"
             onChange={this.radioChange}
             checked={this.state.type === "text"}
           />
@@ -31,16 +38,18 @@ export default class Radios extends Component {
         <label>
           <input
             type="radio"
-            name="checkbox"
+            name="input"
+            value="checkbox"
             onChange={this.radioChange}
-            checked={this.state.type === "checkbox" }
+            checked={this.state.type === "checkbox"}
           />
           Checkbox
         </label>
         <label>
           <input
             type="radio"
-            name="select"
+            name="input"
+            value="select"
             onChange={this.radioChange}
             checked={this.state.type === "select"}
           />
@@ -49,7 +58,8 @@ export default class Radios extends Component {
         <label>
           <input
             type="radio"
-            name="radios"
+            name="input"
+            value="radios"
             onChange={this.radioChange}
             checked={this.state.type === "radios"}
           />

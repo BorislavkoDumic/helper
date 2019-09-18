@@ -13,7 +13,7 @@ class Input extends Component {
     const style = { width: 550 };
     this.setState({ style });
   };
-  handleChange = () => {
+  handleChangeShow = () => {
     this.setState({ showComponet: !this.state.showComponet });
   };
 
@@ -31,11 +31,11 @@ class Input extends Component {
     ));
   };
 
-  handleChange(i, event) {
+  handleChange = (i, event) => {
     let values = [...this.state.values];
     values[i] = event.target.value;
     this.setState({ value: event.target.value });
-  }
+  };
   addClick = () => {
     this.setState(prevState => ({ values: [...prevState.values, ""] }));
   };
@@ -67,7 +67,17 @@ class Input extends Component {
             <input type="text"></input>
           </label>
           <div className="inputForm">
-            <Radios />
+            <Radios
+              title="Type"
+              options={{
+                text: "Textfield",
+                radios: "Radios",
+                checkbox: "CheckBox",
+                select: "Select",
+                name: "input",
+                type: "radio"
+              }}
+            />
             {this.state.showComponet ? (
               <div>
                 <label>ADD MORE OPTIONS</label>
