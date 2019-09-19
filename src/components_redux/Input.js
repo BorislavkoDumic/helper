@@ -69,14 +69,25 @@ class Input extends Component {
           <div className="inputForm">
             <Radios
               title="Type"
-              options={{
-                text: "Textfield",
-                radios: "Radios",
-                checkbox: "CheckBox",
-                select: "Select",
-                name: "input",
-                type: "radio"
-              }}
+              name="type"
+              options={[
+                {
+                  value: "text",
+                  label: "Textfiled"
+                },
+                {
+                  value: "checkbox",
+                  label: "CheckBox"
+                },
+                {
+                  value: "select",
+                  label: "Select"
+                },
+                {
+                  value: "radios",
+                  label: "Radios"
+                }
+              ]}
             />
             {this.state.showComponet ? (
               <div>
