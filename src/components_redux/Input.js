@@ -4,7 +4,10 @@ import Radios from "./Radios";
 class Input extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showComponet: false,
+      selectedValue: " "
+    };
     this.openNav = this.openNav;
     this.state = { values: [] };
     this.handleSubmit = this.handleSubmit;
@@ -13,8 +16,11 @@ class Input extends Component {
     const style = { width: 550 };
     this.setState({ style });
   };
-  handleChangeShow = () => {
-    this.setState({ showComponet: !this.state.showComponet });
+  handleChangeShow = selectedValue => {
+    this.setState({
+      showComponet: !this.state.showComponet,
+      selectedValue: selectedValue
+    });
   };
 
   createUI = () => {
@@ -88,8 +94,10 @@ class Input extends Component {
                   label: "Radios"
                 }
               ]}
+              handleChangeShow={this.handleChangeShow}
             />
-            {this.state.showComponet ? (
+            {this.state.selectedValue === "select" ||
+            this.state.selectedValue === "radios" ? (
               <div>
                 <label>ADD MORE OPTIONS</label>
                 <form className="inputForm" onSubmit={this.handleSubmit}>
