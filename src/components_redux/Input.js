@@ -5,8 +5,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showComponet: false,
-      selectedValue: " "
+      value: ""
     };
     this.openNav = this.openNav;
     this.state = { values: [] };
@@ -16,10 +15,9 @@ class Input extends Component {
     const style = { width: 550 };
     this.setState({ style });
   };
-  handleChangeShow = selectedValue => {
+  handleChangeShow = value => {
     this.setState({
-      showComponet: !this.state.showComponet,
-      selectedValue: selectedValue
+      value: value
     });
   };
 
@@ -96,8 +94,7 @@ class Input extends Component {
               ]}
               handleChangeShow={this.handleChangeShow}
             />
-            {this.state.selectedValue === "select" ||
-            this.state.selectedValue === "radios" ? (
+            {this.state.value === "select" || this.state.value === "radios" ? (
               <div>
                 <label>ADD MORE OPTIONS</label>
                 <form className="inputForm" onSubmit={this.handleSubmit}>
