@@ -5,10 +5,10 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      values: [""]
     };
     this.openNav = this.openNav;
-    this.state = { values: [] };
     this.handleSubmit = this.handleSubmit;
   }
   openNav = () => {
@@ -22,30 +22,43 @@ class Input extends Component {
   };
 
   createUI = () => {
-    return this.state.values.map((el, i) => (
+    return this.state.values.map((inputField, i) => (
       <div key={i}>
         <label>Value</label>
         <input
+          className="input-option"
           type="text"
-          defaultValue={el || ""}
-          onChange={this.state.handleChange}
+          onChange={this.handleChange(i)}
+          value={inputField}
         />
-        <input type="button" value="DELETE" onClick={this.removeClick} />
+        <input
+          type="button"
+          className="button-option"
+          value="DELETE"
+          onClick={this.removeClick(i)}
+        />
       </div>
     ));
   };
 
-  handleChange = (i, event) => {
+  handleChange = i => e => {
     let values = [...this.state.values];
-    values[i] = event.target.value;
-    this.setState({ value: event.target.value });
+    values[i] = e.target.value;
+    this.setState({ values });
   };
-  addClick = () => {
-    this.setState(prevState => ({ values: [...prevState.values, ""] }));
+  addClick = e => {
+    e.preventDefault();
+    let values = this.state.values.concat([""]);
+    this.setState({
+      values
+    });
   };
-  removeClick = i => {
-    let values = [...this.state.values];
-    values.splice(i, 1);
+  removeClick = i => e => {
+    e.preventDefault();
+    let values = [
+      ...this.state.values.slice(0, i),
+      ...this.state.values.slice(i + 1)
+    ];
     this.setState({ values });
   };
 
@@ -97,22 +110,20 @@ class Input extends Component {
             {this.state.value === "select" || this.state.value === "radios" ? (
               <div>
                 <label>ADD MORE OPTIONS</label>
-                <form className="inputForm" onSubmit={this.handleSubmit}>
-                  {this.createUI()}
+                <form className="options-form" onSubmit={this.handleSubmit}>
                   <label>
                     Value
                     <input
                       type="text"
                       name="input"
+                      className="input-option"
                       onChange={this.state.handleChange}
                     />
                   </label>
-                  <button className="button-small" onClick={this.addClick}>
+                  <button className="button-option" onClick={this.addClick}>
                     ADD
                   </button>
-                  <button className="button-small" onClick={this.removeClick}>
-                    DELETE
-                  </button>
+                  {this.createUI()}
                 </form>
               </div>
             ) : null}

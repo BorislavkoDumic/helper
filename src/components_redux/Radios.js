@@ -10,9 +10,9 @@ export default class Radios extends Component {
     this.setState(
       {
         type: event.target.value
-      },
-      this.props.handleChangeShow(event.target.value)
+      }
     );
+    this.props.handleChangeShow(event.target.value)
   };
 
   render() {

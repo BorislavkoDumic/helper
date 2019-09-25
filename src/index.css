@@ -28,9 +28,10 @@ code {
   text-align: center;
   outline: 2px;
   margin: 18px 14px;
+  display: inline-block;
 }
-.button{
-  background-color: #008CBA;
+.button {
+  background-color: #008cba;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -40,6 +41,21 @@ code {
   margin: 14px 12px;
   font-size: 16px;
 }
+.button-option {
+  background-color: #008cba;
+  color: white;
+  width: 80px;
+  height: 30px;
+  margin: 0 auto;
+  margin: 7px;
+  padding: 0;
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+}
+.input-option {
+  margin: 7px;
+}
 .overlay {
   height: 100%;
   width: 0;
@@ -47,7 +63,6 @@ code {
   margin: 150px;
   z-index: 1;
   text-align: center;
-  background-color: rgb(0,0,0);
   background-color: rgba(177, 75, 75, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
@@ -70,7 +85,8 @@ code {
   transition: 0.3s;
 }
 
-.overlay a:hover, .overlay a:focus {
+.overlay a:hover,
+.overlay a:focus {
   color: #f1f1f1;
 }
 
@@ -80,16 +96,24 @@ code {
   right: 45px;
   font-size: 60px;
 }
+.options-form {
+  text-align: center;
+  outline: 2px;
+  margin: 18px 14px;
+}
 
 @media screen and (max-height: 450px) {
-.overlay a {font-size: 20px}
-.overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-}
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }
 
-.overlay h2, .overlay p {
-color:white;
+.overlay h2,
+.overlay p {
+  color: white;
 }
