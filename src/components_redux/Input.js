@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import Radios from "./Radios";
+import { openOverlay } from "../actions/index";
+import { connect } from "react-redux";
 
 class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
-      values: [""]
+      values: []
     };
     this.openNav = this.openNav;
     this.handleSubmit = this.handleSubmit;
   }
   openNav = () => {
-    const style = { width: 550 };
-    this.setState({ style });
+    this.props.openOverlay();
   };
   handleChangeShow = value => {
     this.setState({
@@ -55,10 +56,8 @@ class Input extends Component {
   };
   removeClick = i => e => {
     e.preventDefault();
-    let values = [
-      ...this.state.values.slice(0, i),
-      ...this.state.values.slice(i + 1)
-    ];
+    let values = [...this.state.values];
+    values.splice(i, 1);
     this.setState({ values });
   };
 
@@ -67,6 +66,8 @@ class Input extends Component {
   };
 
   render() {
+    const { showOverlay } = this.props;
+
     return (
       <div>
         <div className="input-conntainer">
@@ -77,65 +78,84 @@ class Input extends Component {
             placeholder="Click here to for input text"
           ></input>
         </div>
-        <div className="overlay" style={this.state.style}>
-          <h2>Fill the form</h2>
-          <label className="label">
-            Label:
-            <input type="text"></input>
-          </label>
-          <div className="inputForm">
-            <Radios
-              title="Type"
-              name="type"
-              options={[
-                {
-                  value: "text",
-                  label: "Textfiled"
-                },
-                {
-                  value: "checkbox",
-                  label: "CheckBox"
-                },
-                {
-                  value: "select",
-                  label: "Select"
-                },
-                {
-                  value: "radios",
-                  label: "Radios"
-                }
-              ]}
-              handleChangeShow={this.handleChangeShow}
-            />
-            {this.state.value === "select" || this.state.value === "radios" ? (
-              <div>
-                <label>ADD MORE OPTIONS</label>
-                <form className="options-form" onSubmit={this.handleSubmit}>
-                  <label>
-                    Value
-                    <input
-                      type="text"
-                      name="input"
-                      className="input-option"
-                      onChange={this.state.handleChange}
-                    />
-                  </label>
-                  <button className="button-option" onClick={this.addClick}>
-                    ADD
-                  </button>
-                  {this.createUI()}
-                </form>
-              </div>
-            ) : null}
+        {showOverlay && (
+          <div className="overlay" style={{ width: 500 }}>
+            <h2>Fill the form</h2>
+            <label className="label">
+              Label:
+              <input type="text"></input>
+            </label>
+            <div className="inputForm">
+              <Radios
+                title="Type"
+                name="type"
+                options={[
+                  {
+                    value: "text",
+                    label: "Textfiled"
+                  },
+                  {
+                    value: "checkbox",
+                    label: "CheckBox"
+                  },
+                  {
+                    value: "select",
+                    label: "Select"
+                  },
+                  {
+                    value: "radios",
+                    label: "Radios"
+                  }
+                ]}
+                handleChangeShow={this.handleChangeShow}
+              />
+              {this.state.value === "select" ||
+              this.state.value === "radios" ? (
+                <div>
+                  <label>ADD MORE OPTIONS</label>
+                  <form className="options-form" onSubmit={this.handleSubmit}>
+                    <label>
+                      Value
+                      <input
+                        type="text"
+                        name="input"
+                        className="input-option"
+                        onChange={this.state.handleChange}
+                      />
+                    </label>
+                    <button className="button-option" onClick={this.addClick}>
+                      ADD
+                    </button>
+                    {this.createUI()}
+                  </form>
+                </div>
+              ) : null}
+            </div>
+            <textarea></textarea>
+            <button className="button" onClick={this.handleSubmit}>
+              Save
+            </button>
+            <button className="button">Cancel</button>
           </div>
-          <textarea></textarea>
-          <button className="button" onClick={this.handleSubmit}>
-            Save
-          </button>
-          <button className="button">Cancel</button>
-        </div>
+        )}
       </div>
     );
   }
 }
-export default Input;
+
+const mapStateToProps = state => {
+  return {
+    showOverlay: state.showOverlay
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    openOverlay: () => dispatch(openOverlay())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Input);
