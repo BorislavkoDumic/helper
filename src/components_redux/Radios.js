@@ -7,12 +7,10 @@ export default class Radios extends Component {
   }
 
   radioChange = event => {
-    this.setState(
-      {
-        type: event.target.value
-      }
-    );
-    this.props.handleChangeShow(event.target.value)
+    this.setState({
+      type: event.target.value
+    });
+    this.props.showOptions(event.target.value);
   };
 
   render() {

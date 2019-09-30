@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Radios from "./Radios";
-import { openOverlay } from "../actions/index";
+import { openOverlay, showOptions, addField } from "../actions/index";
 import { connect } from "react-redux";
 
 class Input extends Component {
@@ -13,10 +13,11 @@ class Input extends Component {
     this.openNav = this.openNav;
     this.handleSubmit = this.handleSubmit;
   }
-  openNav = () => {
+  openOverlay = () => {
     this.props.openOverlay();
   };
-  handleChangeShow = value => {
+  showOptions = value => {
+    this.props.showOptions();
     this.setState({
       value: value
     });
@@ -47,12 +48,9 @@ class Input extends Component {
     values[i] = e.target.value;
     this.setState({ values });
   };
-  addClick = e => {
+  addField = e => {
     e.preventDefault();
-    let values = this.state.values.concat([""]);
-    this.setState({
-      values
-    });
+    this.props.addField();
   };
   removeClick = i => e => {
     e.preventDefault();
@@ -72,7 +70,7 @@ class Input extends Component {
       <div>
         <div className="input-conntainer">
           <input
-            onClick={this.openNav}
+            onClick={this.openOverlay}
             className="input-field"
             type="text"
             placeholder="Click here to for input text"
@@ -107,7 +105,7 @@ class Input extends Component {
                     label: "Radios"
                   }
                 ]}
-                handleChangeShow={this.handleChangeShow}
+                showOptions={this.showOptions}
               />
               {this.state.value === "select" ||
               this.state.value === "radios" ? (
@@ -123,7 +121,7 @@ class Input extends Component {
                         onChange={this.state.handleChange}
                       />
                     </label>
-                    <button className="button-option" onClick={this.addClick}>
+                    <button className="button-option" onClick={this.addField}>
                       ADD
                     </button>
                     {this.createUI()}
@@ -145,13 +143,17 @@ class Input extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.showOverlay
+    showOverlay: state.overlay.showOverlay,
+    showOptions: state.overlay.showOptions,
+    addField: state.inputFields.addField
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    openOverlay: () => dispatch(openOverlay())
+    openOverlay: () => dispatch(openOverlay()),
+    showOptions: () => dispatch(showOptions()),
+    addField: values => dispatch(addField(values))
   };
 };
 
