@@ -1,62 +1,52 @@
 import React, { Component } from "react";
 import Radios from "./Radios";
-import { openOverlay, showOptions, addField } from "../actions/index";
+import {
+  openOverlay,
+  showOptions,
+  addField,
+  removeField,
+  changeValue
+} from "../actions/index";
 import { connect } from "react-redux";
 
 class Input extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-      values: []
-    };
-    this.openNav = this.openNav;
-    this.handleSubmit = this.handleSubmit;
-  }
   openOverlay = () => {
     this.props.openOverlay();
   };
   showOptions = value => {
-    this.props.showOptions();
-    this.setState({
-      value: value
-    });
+    this.props.showOptions(value);
   };
 
-  createUI = () => {
-    return this.state.values.map((inputField, i) => (
+  createUI = inputValues => {
+    return inputValues.map((inputField, i) => (
       <div key={i}>
         <label>Value</label>
         <input
           className="input-option"
           type="text"
-          onChange={this.handleChange(i)}
+          onChange={this.changeValue(i)}
           value={inputField}
         />
         <input
           type="button"
           className="button-option"
           value="DELETE"
-          onClick={this.removeClick(i)}
+          onClick={this.removeField(i)}
         />
       </div>
     ));
   };
 
-  handleChange = i => e => {
-    let values = [...this.state.values];
-    values[i] = e.target.value;
-    this.setState({ values });
+  changeValue = i => e => {
+    this.props.changeValue(e.target.value, i);
   };
   addField = e => {
     e.preventDefault();
     this.props.addField();
   };
-  removeClick = i => e => {
+  removeField = i => e => {
     e.preventDefault();
-    let values = [...this.state.values];
-    values.splice(i, 1);
-    this.setState({ values });
+    this.props.removeField(i);
   };
 
   handleSubmit = event => {
@@ -64,7 +54,8 @@ class Input extends Component {
   };
 
   render() {
-    const { showOverlay } = this.props;
+    const { showOverlay, inputValues } = this.props;
+    const uiElements = this.createUI(inputValues);
 
     return (
       <div>
@@ -81,7 +72,7 @@ class Input extends Component {
             <h2>Fill the form</h2>
             <label className="label">
               Label:
-              <input type="text"></input>
+              <input type="text" onChange={this.changeValue}></input>
             </label>
             <div className="inputForm">
               <Radios
@@ -107,24 +98,15 @@ class Input extends Component {
                 ]}
                 showOptions={this.showOptions}
               />
-              {this.state.value === "select" ||
-              this.state.value === "radios" ? (
+              {this.props.overlayValue === "select" ||
+              this.props.overlayValue === "radios" ? (
                 <div>
                   <label>ADD MORE OPTIONS</label>
                   <form className="options-form" onSubmit={this.handleSubmit}>
-                    <label>
-                      Value
-                      <input
-                        type="text"
-                        name="input"
-                        className="input-option"
-                        onChange={this.state.handleChange}
-                      />
-                    </label>
                     <button className="button-option" onClick={this.addField}>
                       ADD
                     </button>
-                    {this.createUI()}
+                    {uiElements}
                   </form>
                 </div>
               ) : null}
@@ -145,15 +127,18 @@ const mapStateToProps = state => {
   return {
     showOverlay: state.overlay.showOverlay,
     showOptions: state.overlay.showOptions,
-    addField: state.inputFields.addField
+    overlayValue: state.overlay.value,
+    inputValues: state.inputFields.values
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     openOverlay: () => dispatch(openOverlay()),
-    showOptions: () => dispatch(showOptions()),
-    addField: values => dispatch(addField(values))
+    showOptions: value => dispatch(showOptions(value)),
+    addField: () => dispatch(addField()),
+    removeField: i => dispatch(removeField(i)),
+    changeValue: (value, index) => dispatch(changeValue(value, index))
   };
 };
 

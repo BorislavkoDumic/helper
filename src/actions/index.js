@@ -4,16 +4,22 @@ export const openOverlay = () => ({
   type: actionTypes.OPEN_OVERLAY
 });
 
-export const showOptions = () => ({
-  type: actionTypes.SHOW_OPTIONS
+export const showOptions = value => ({
+  type: actionTypes.SHOW_OPTIONS,
+  value
 });
 
-export const addField = values => ({
-  type: actionTypes.ADD_FIELD,
-  values
+export const addField = () => ({
+  type: actionTypes.ADD_FIELD
 });
 
-export const removeField = values => ({
+export const removeField = index => ({
   type: actionTypes.REMOVE_FIELD,
-  values
+  index
+});
+
+export const changeValue = (value, index) => ({
+  type: actionTypes.CHANGE_VALUE,
+  value,
+  index
 });

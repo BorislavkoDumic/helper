@@ -2,7 +2,8 @@ import { OPEN_OVERLAY, SHOW_OPTIONS } from "../utils/actionTypes";
 
 const initialState = {
   showOverlay: false,
-  showOptions: false
+  showOptions: false,
+  value: ""
 };
 
 export default function overlayReducer(state = initialState, action) {
@@ -15,7 +16,8 @@ export default function overlayReducer(state = initialState, action) {
     case SHOW_OPTIONS:
       return {
         ...state,
-        showOptions: true
+        showOptions: true,
+        value: action.value
       };
     default:
       return state;
