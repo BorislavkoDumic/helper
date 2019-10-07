@@ -6,7 +6,6 @@ const initialState = {
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_VALUE:
-      //console.log(action);
       let values = state.values.map((item, index) => {
         if (index !== action.index) {
           return item;
@@ -23,9 +22,7 @@ export default function inputReducer(state = initialState, action) {
         values: [...state.values, ""]
       };
     case REMOVE_FIELD:
-      // console.log(action);
       state.values.splice(action.index, 1);
-      //console.log(state);
       return {
         ...state,
         values: state.values.filter(index => index !== action.index)
