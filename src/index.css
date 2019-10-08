@@ -56,6 +56,10 @@ code {
 .input-option {
   margin: 7px;
 }
+.text-area {
+  width: 380px;
+  height: 80px;
+}
 .overlay {
   height: 100%;
   width: 0;

@@ -3,3 +3,4 @@ export const SHOW_OPTIONS = "SHOW_OPTIONS";
 export const ADD_FIELD = "ADD_FIELD";
 export const REMOVE_FIELD = "REMOVE _FIELD";
 export const CHANGE_VALUE = "CHANGE_VALUE";
+export const CHANGE_LABEL = "CHANGE_LABEL";

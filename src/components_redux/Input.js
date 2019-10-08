@@ -5,7 +5,8 @@ import {
   showOptions,
   addField,
   removeField,
-  changeValue
+  changeValue,
+  changeLabel
 } from "../actions/index";
 import { connect } from "react-redux";
 
@@ -16,7 +17,6 @@ class Input extends Component {
   showOptions = value => {
     this.props.showOptions(value);
   };
-
   createUI = inputValues => {
     return inputValues.map((inputField, i) => (
       <div key={i}>
@@ -36,9 +36,11 @@ class Input extends Component {
       </div>
     ));
   };
-
   changeValue = i => e => {
     this.props.changeValue(e.target.value, i);
+  };
+  changeLabel = e => {
+    this.props.changeLabel(e.target.value);
   };
   addField = e => {
     e.preventDefault();
@@ -54,7 +56,7 @@ class Input extends Component {
   };
 
   render() {
-    const { showOverlay, inputValues } = this.props;
+    const { showOverlay, inputValues, overlayValue, labelValue } = this.props;
     const uiElements = this.createUI(inputValues);
 
     return (
@@ -72,7 +74,11 @@ class Input extends Component {
             <h2>Fill the form</h2>
             <label className="label">
               Label:
-              <input type="text" onChange={this.changeValue}></input>
+              <input
+                type="text"
+                onChange={this.changeLabel}
+                value={labelValue}
+              ></input>
             </label>
             <div className="inputForm">
               <Radios
@@ -98,11 +104,10 @@ class Input extends Component {
                 ]}
                 showOptions={this.showOptions}
               />
-              {this.props.overlayValue === "select" ||
-              this.props.overlayValue === "radios" ? (
+              {overlayValue === "select" || overlayValue === "radios" ? (
                 <div>
                   <label>ADD MORE OPTIONS</label>
-                  <form className="options-form" onSubmit={this.handleSubmit}>
+                  <form className="options-form">
                     <button className="button-option" onClick={this.addField}>
                       ADD
                     </button>
@@ -111,7 +116,18 @@ class Input extends Component {
                 </div>
               ) : null}
             </div>
-            <textarea></textarea>
+            <textarea
+              className="text-area"
+              onChange={this.changeValue}
+              value={JSON.stringify({
+                LABEL: labelValue,
+                TYPE: overlayValue,
+                OPTIONS: {
+                  KEY: inputValues,
+                  VALUE: inputValues
+                }
+              })}
+            ></textarea>
             <button className="button" onClick={this.handleSubmit}>
               Save
             </button>
@@ -128,7 +144,8 @@ const mapStateToProps = state => {
     showOverlay: state.overlay.showOverlay,
     showOptions: state.overlay.showOptions,
     overlayValue: state.overlay.value,
-    inputValues: state.inputFields.values
+    inputValues: state.inputFields.values,
+    labelValue: state.inputFields.labelValue
   };
 };
 
@@ -138,7 +155,8 @@ const mapDispatchToProps = dispatch => {
     showOptions: value => dispatch(showOptions(value)),
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),
-    changeValue: (value, index) => dispatch(changeValue(value, index))
+    changeValue: (value, index) => dispatch(changeValue(value, index)),
+    changeLabel: labelValue => dispatch(changeLabel(labelValue))
   };
 };
 

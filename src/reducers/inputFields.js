@@ -1,7 +1,13 @@
-import { ADD_FIELD, REMOVE_FIELD, CHANGE_VALUE } from "../utils/actionTypes";
+import {
+  ADD_FIELD,
+  REMOVE_FIELD,
+  CHANGE_VALUE,
+  CHANGE_LABEL
+} from "../utils/actionTypes";
 
 const initialState = {
-  values: []
+  values: [],
+  labelValue: ""
 };
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
@@ -15,6 +21,11 @@ export default function inputReducer(state = initialState, action) {
       return {
         ...state,
         values
+      };
+    case CHANGE_LABEL:
+      return {
+        ...state,
+        labelValue: action.labelValue
       };
     case ADD_FIELD:
       return {

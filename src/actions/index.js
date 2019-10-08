@@ -23,3 +23,8 @@ export const changeValue = (value, index) => ({
   value,
   index
 });
+
+export const changeLabel = labelValue => ({
+  type: actionTypes.CHANGE_LABEL,
+  labelValue
+});
