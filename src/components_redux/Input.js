@@ -6,7 +6,9 @@ import {
   addField,
   removeField,
   changeValue,
-  changeLabel
+  changeLabel,
+  saveValues,
+  cancel
 } from "../actions/index";
 import { connect } from "react-redux";
 
@@ -50,14 +52,31 @@ class Input extends Component {
     e.preventDefault();
     this.props.removeField(i);
   };
-
-  handleSubmit = event => {
-    event.preventDefault();
+  saveValues = valuesString => {
+    this.props.saveValues(valuesString);
+  };
+  cancel = () => {
+    this.props.cancel();
   };
 
   render() {
-    const { showOverlay, inputValues, overlayValue, labelValue } = this.props;
+    const {
+      showOverlay,
+      inputValues,
+      overlayValue,
+      labelValue,
+      mainInput
+    } = this.props;
     const uiElements = this.createUI(inputValues);
+
+    const valuesString = JSON.stringify({
+      LABEL: labelValue,
+      TYPE: overlayValue,
+      OPTIONS: {
+        KEY: inputValues,
+        VALUE: inputValues
+      }
+    });
 
     return (
       <div>
@@ -67,6 +86,8 @@ class Input extends Component {
             className="input-field"
             type="text"
             placeholder="Click here to for input text"
+            value={mainInput}
+            readOnly
           ></input>
         </div>
         {showOverlay && (
@@ -119,19 +140,17 @@ class Input extends Component {
             <textarea
               className="text-area"
               onChange={this.changeValue}
-              value={JSON.stringify({
-                LABEL: labelValue,
-                TYPE: overlayValue,
-                OPTIONS: {
-                  KEY: inputValues,
-                  VALUE: inputValues
-                }
-              })}
+              value={valuesString}
             ></textarea>
-            <button className="button" onClick={this.handleSubmit}>
+            <button
+              className="button"
+              onClick={() => this.saveValues(valuesString)}
+            >
               Save
             </button>
-            <button className="button">Cancel</button>
+            <button className="button" onClick={this.cancel}>
+              Cancel
+            </button>
           </div>
         )}
       </div>
@@ -145,7 +164,8 @@ const mapStateToProps = state => {
     showOptions: state.overlay.showOptions,
     overlayValue: state.overlay.value,
     inputValues: state.inputFields.values,
-    labelValue: state.inputFields.labelValue
+    labelValue: state.inputFields.labelValue,
+    mainInput: state.inputFields.mainInput
   };
 };
 
@@ -156,7 +176,9 @@ const mapDispatchToProps = dispatch => {
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),
     changeValue: (value, index) => dispatch(changeValue(value, index)),
-    changeLabel: labelValue => dispatch(changeLabel(labelValue))
+    changeLabel: labelValue => dispatch(changeLabel(labelValue)),
+    saveValues: valuesString => dispatch(saveValues(valuesString)),
+    cancel: () => dispatch(cancel())
   };
 };
 

@@ -28,3 +28,11 @@ export const changeLabel = labelValue => ({
   type: actionTypes.CHANGE_LABEL,
   labelValue
 });
+
+export const saveValues = valuesString => ({
+  type: actionTypes.SAVE_VALUES,
+  valuesString
+});
+export const cancel = () => ({
+  type: actionTypes.CANCEL
+});

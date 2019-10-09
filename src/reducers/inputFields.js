@@ -2,12 +2,15 @@ import {
   ADD_FIELD,
   REMOVE_FIELD,
   CHANGE_VALUE,
-  CHANGE_LABEL
+  CHANGE_LABEL,
+  SAVE_VALUES,
+  CANCEL
 } from "../utils/actionTypes";
 
 const initialState = {
   values: [],
-  labelValue: ""
+  labelValue: "",
+  mainInput: ""
 };
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
@@ -37,6 +40,18 @@ export default function inputReducer(state = initialState, action) {
       return {
         ...state,
         values: state.values.filter(index => index !== action.index)
+      };
+    case SAVE_VALUES:
+      return {
+        ...state,
+        mainInput: action.valuesString
+      };
+    case CANCEL:
+      return {
+        ...state,
+        values: [],
+        labelValue: " ",
+        mainInput: ""
       };
     default:
       return state;
