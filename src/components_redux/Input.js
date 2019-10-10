@@ -69,14 +69,22 @@ class Input extends Component {
     } = this.props;
     const uiElements = this.createUI(inputValues);
 
-    const valuesString = JSON.stringify({
-      LABEL: labelValue,
-      TYPE: overlayValue,
-      OPTIONS: {
-        KEY: inputValues,
-        VALUE: inputValues
-      }
-    });
+    let showOptionsInTextarea = {
+      label: labelValue,
+      type: overlayValue
+    };
+
+    if (
+      showOptionsInTextarea.type === "select" ||
+      showOptionsInTextarea.type === "radios"
+    ) {
+      showOptionsInTextarea = {
+        ...showOptionsInTextarea,
+        options: inputValues
+      };
+    }
+
+    const valuesString = JSON.stringify(showOptionsInTextarea);
 
     return (
       <div>
@@ -160,9 +168,9 @@ class Input extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.overlay.showOverlay,
-    showOptions: state.overlay.showOptions,
-    overlayValue: state.overlay.value,
+    showOverlay: state.inputFields.showOverlay,
+    showOptions: state.inputFields.showOptions,
+    overlayValue: state.inputFields.value,
     inputValues: state.inputFields.values,
     labelValue: state.inputFields.labelValue,
     mainInput: state.inputFields.mainInput

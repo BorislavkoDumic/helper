@@ -1,4 +1,6 @@
 import {
+  OPEN_OVERLAY,
+  SHOW_OPTIONS,
   ADD_FIELD,
   REMOVE_FIELD,
   CHANGE_VALUE,
@@ -8,12 +10,24 @@ import {
 } from "../utils/actionTypes";
 
 const initialState = {
+  showOverlay: false,
+  value: "",
   values: [],
   labelValue: "",
   mainInput: ""
 };
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
+    case OPEN_OVERLAY:
+      return {
+        ...state,
+        showOverlay: true
+      };
+    case SHOW_OPTIONS:
+      return {
+        ...state,
+        value: action.value
+      };
     case CHANGE_VALUE:
       let values = state.values.map((item, index) => {
         if (index !== action.index) {
@@ -44,14 +58,17 @@ export default function inputReducer(state = initialState, action) {
     case SAVE_VALUES:
       return {
         ...state,
-        mainInput: action.valuesString
+        mainInput: action.valuesString,
+        showOverlay: false,
+        values: [],
+        labelValue: " "
       };
     case CANCEL:
       return {
         ...state,
         values: [],
         labelValue: " ",
-        mainInput: ""
+        mainInput: "Click here to for input text"
       };
     default:
       return state;
