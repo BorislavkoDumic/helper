@@ -16,11 +16,11 @@ class Input extends Component {
   openOverlay = () => {
     this.props.openOverlay();
   };
-  showOptions = value => {
-    this.props.showOptions(value);
+  changeType = value => {
+    this.props.changeType(value);
   };
-  createUI = inputValues => {
-    return inputValues.map((inputField, i) => (
+  createUI = options => {
+    return options.map((inputField, i) => (
       <div key={i}>
         <label>Value</label>
         <input
@@ -60,31 +60,22 @@ class Input extends Component {
   };
 
   render() {
-    const {
-      showOverlay,
-      inputValues,
-      overlayValue,
-      labelValue,
-      mainInput
-    } = this.props;
-    const uiElements = this.createUI(inputValues);
+    const { showOverlay, options, type, label, jsonString } = this.props;
+    const uiElements = this.createUI(options);
 
-    let showOptionsInTextarea = {
-      label: labelValue,
-      type: overlayValue
+    let jsonObject = {
+      label: label,
+      type: type
     };
 
-    if (
-      showOptionsInTextarea.type === "select" ||
-      showOptionsInTextarea.type === "radios"
-    ) {
-      showOptionsInTextarea = {
-        ...showOptionsInTextarea,
-        options: inputValues
+    if (jsonObject.type === "select" || jsonObject.type === "radios") {
+      jsonObject = {
+        ...jsonObject,
+        options: options
       };
     }
 
-    const valuesString = JSON.stringify(showOptionsInTextarea);
+    const valuesString = JSON.stringify(jsonObject);
 
     return (
       <div>
@@ -94,7 +85,7 @@ class Input extends Component {
             className="input-field"
             type="text"
             placeholder="Click here to for input text"
-            value={mainInput}
+            value={jsonString}
             readOnly
           ></input>
         </div>
@@ -106,7 +97,7 @@ class Input extends Component {
               <input
                 type="text"
                 onChange={this.changeLabel}
-                value={labelValue}
+                value={label}
               ></input>
             </label>
             <div className="inputForm">
@@ -131,9 +122,9 @@ class Input extends Component {
                     label: "Radios"
                   }
                 ]}
-                showOptions={this.showOptions}
+                changeType={this.changeType}
               />
-              {overlayValue === "select" || overlayValue === "radios" ? (
+              {type === "select" || type === "radios" ? (
                 <div>
                   <label>ADD MORE OPTIONS</label>
                   <form className="options-form">
@@ -170,10 +161,10 @@ const mapStateToProps = state => {
   return {
     showOverlay: state.inputFields.showOverlay,
     showOptions: state.inputFields.showOptions,
-    overlayValue: state.inputFields.value,
-    inputValues: state.inputFields.values,
-    labelValue: state.inputFields.labelValue,
-    mainInput: state.inputFields.mainInput
+    type: state.inputFields.type,
+    options: state.inputFields.options,
+    label: state.inputFields.label,
+    jsonString: state.inputFields.jsonString
   };
 };
 
@@ -184,7 +175,7 @@ const mapDispatchToProps = dispatch => {
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),
     changeValue: (value, index) => dispatch(changeValue(value, index)),
-    changeLabel: labelValue => dispatch(changeLabel(labelValue)),
+    changeLabel: label => dispatch(changeLabel(label)),
     saveValues: valuesString => dispatch(saveValues(valuesString)),
     cancel: () => dispatch(cancel())
   };

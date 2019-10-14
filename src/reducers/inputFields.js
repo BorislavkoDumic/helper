@@ -1,6 +1,6 @@
 import {
   OPEN_OVERLAY,
-  SHOW_OPTIONS,
+  CHANGE_TYPE,
   ADD_FIELD,
   REMOVE_FIELD,
   CHANGE_VALUE,
@@ -11,25 +11,20 @@ import {
 
 const initialState = {
   showOverlay: false,
-  value: "",
-  values: [],
-  labelValue: "",
-  mainInput: ""
+  type: "",
+  options: [],
+  label: "",
+  jsonString: ""
 };
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
-    case OPEN_OVERLAY:
+    case CHANGE_TYPE:
       return {
         ...state,
-        showOverlay: true
-      };
-    case SHOW_OPTIONS:
-      return {
-        ...state,
-        value: action.value
+        type: action.value
       };
     case CHANGE_VALUE:
-      let values = state.values.map((item, index) => {
+      let options = state.options.map((item, index) => {
         if (index !== action.index) {
           return item;
         }
@@ -37,38 +32,43 @@ export default function inputReducer(state = initialState, action) {
       });
       return {
         ...state,
-        values
+        options
       };
     case CHANGE_LABEL:
       return {
         ...state,
-        labelValue: action.labelValue
+        label: action.label
       };
     case ADD_FIELD:
       return {
         ...state,
-        values: [...state.values, ""]
+        options: [...state.options, ""]
       };
     case REMOVE_FIELD:
-      state.values.splice(action.index, 1);
+      state.options.splice(action.index, 1);
       return {
         ...state,
-        values: state.values.filter(index => index !== action.index)
+        options: state.options.filter(index => index !== action.index)
       };
     case SAVE_VALUES:
       return {
         ...state,
-        mainInput: action.valuesString,
+        jsonString: action.valuesString,
         showOverlay: false,
-        values: [],
-        labelValue: " "
+        options: [],
+        label: " "
       };
     case CANCEL:
       return {
         ...state,
-        values: [],
-        labelValue: " ",
-        mainInput: "Click here to for input text"
+        options: [],
+        label: " ",
+        jsonString: "Click here to for input text"
+      };
+    case OPEN_OVERLAY:
+      return {
+        ...state,
+        showOverlay: true
       };
     default:
       return state;

@@ -1,6 +1,6 @@
 import {
   OPEN_OVERLAY,
-  SHOW_OPTIONS,
+  CHANGE_TYPE,
   ADD_FIELD,
   REMOVE_FIELD,
   CHANGE_VALUE,
@@ -10,7 +10,7 @@ import {
 } from "../../utils/actionTypes";
 import {
   openOverlay,
-  showOptions,
+  changeType,
   addField,
   removeField,
   changeValue,
@@ -26,12 +26,12 @@ describe("displayActions", () => {
     };
     expect(openOverlay()).toEqual(expectedAction);
   });
-  it("Creates an action to show options", () => {
+  it("Creates an action to change type", () => {
     const expectedAction = {
-      type: SHOW_OPTIONS,
-      value: "First value"
+      type: CHANGE_TYPE,
+      value: "select"
     };
-    expect(showOptions("First value")).toEqual(expectedAction);
+    expect(changeType("select")).toEqual(expectedAction);
   });
   it("Creates an action to add field", () => {
     const expectedAction = {
@@ -57,7 +57,7 @@ describe("displayActions", () => {
   it("Creates an action when value of label is changed", () => {
     const expectedAction = {
       type: CHANGE_LABEL,
-      labelValue: "Value of label"
+      label: "Value of label"
     };
     expect(changeLabel("Value of label")).toEqual(expectedAction);
   });

@@ -8,6 +8,10 @@ export const showOptions = value => ({
   type: actionTypes.SHOW_OPTIONS,
   value
 });
+export const changeType = value => ({
+  type: actionTypes.CHANGE_TYPE,
+  value
+});
 
 export const addField = () => ({
   type: actionTypes.ADD_FIELD
@@ -24,9 +28,9 @@ export const changeValue = (value, index) => ({
   index
 });
 
-export const changeLabel = labelValue => ({
+export const changeLabel = label => ({
   type: actionTypes.CHANGE_LABEL,
-  labelValue
+  label
 });
 
 export const saveValues = valuesString => ({
