@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Open overlay and input value of label Matches the snapshot 1`] = `
+exports[`Advanced tests of app  Selecting the type of radio buttons (radios), add fields and input values then change the type (text) 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -113,7 +113,7 @@ exports[`Open overlay and input value of label Matches the snapshot 1`] = `
     <textarea
       className="text-area"
       onChange={[Function]}
-      value="{\\"label\\":\\"Label value\\",\\"type\\":\\"\\"}"
+      value="{\\"label\\":\\"Label value\\",\\"type\\":\\"text\\"}"
     />
     <button
       className="button"
@@ -131,7 +131,7 @@ exports[`Open overlay and input value of label Matches the snapshot 1`] = `
 </div>
 `;
 
-exports[`Selecting the type of radio buttons (select), add fields and input values Matches the snapshot  1`] = `
+exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -328,138 +328,7 @@ exports[`Selecting the type of radio buttons (select), add fields and input valu
 </div>
 `;
 
-exports[`Selecting the type of radio buttons (select), add fields and input values Selecting the type of radio buttons (radios), add fields and input values then change the type (text) Matches the snapshot  1`] = `
-<div>
-  <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
-  <div
-    className="overlay"
-    style={
-      Object {
-        "width": 500,
-      }
-    }
-  >
-    <h2>
-      Fill the form
-    </h2>
-    <label
-      className="label"
-    >
-      Label:
-      <input
-        onChange={[Function]}
-        type="text"
-        value="Label value"
-      />
-    </label>
-    <div
-      className="inputForm"
-    >
-      <div>
-        Type
-        <div
-          className="inputForm"
-        >
-          <input
-            checked={false}
-            id="text"
-            name="type"
-            onChange={[Function]}
-            type="radio"
-            value="text"
-          />
-          <label
-            htmlFor="text"
-          >
-            Textfiled
-          </label>
-        </div>
-        <div
-          className="inputForm"
-        >
-          <input
-            checked={false}
-            id="checkbox"
-            name="type"
-            onChange={[Function]}
-            type="radio"
-            value="checkbox"
-          />
-          <label
-            htmlFor="checkbox"
-          >
-            CheckBox
-          </label>
-        </div>
-        <div
-          className="inputForm"
-        >
-          <input
-            checked={false}
-            id="select"
-            name="type"
-            onChange={[Function]}
-            type="radio"
-            value="select"
-          />
-          <label
-            htmlFor="select"
-          >
-            Select
-          </label>
-        </div>
-        <div
-          className="inputForm"
-        >
-          <input
-            checked={false}
-            id="radios"
-            name="type"
-            onChange={[Function]}
-            type="radio"
-            value="radios"
-          />
-          <label
-            htmlFor="radios"
-          >
-            Radios
-          </label>
-        </div>
-      </div>
-    </div>
-    <textarea
-      className="text-area"
-      onChange={[Function]}
-      value="{\\"label\\":\\"Label value\\",\\"type\\":\\"text\\"}"
-    />
-    <button
-      className="button"
-      onClick={[Function]}
-    >
-      Save
-    </button>
-    <button
-      className="button"
-      onClick={[Function]}
-    >
-      Cancel
-    </button>
-  </div>
-</div>
-`;
-
-exports[`Selecting the type of radio buttons (select), add fields and input values Selecting the type of radio buttons (select), add fields and input values then click cancel button Matches the snapshot  1`] = `
+exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then click cancel button 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -605,7 +474,7 @@ exports[`Selecting the type of radio buttons (select), add fields and input valu
 </div>
 `;
 
-exports[`Selecting the type of radio buttons (select), add fields and input values Selecting the type of radio buttons (select), add fields and input values then click save button Matches the snapshot  1`] = `
+exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then click save button 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -632,7 +501,7 @@ exports[`Selecting the type of radio buttons (select), add fields and input valu
 </div>
 `;
 
-exports[`Selecting the type of radio buttons (select), add fields and input values Selecting the type of radio buttons (select), add fields and input values then remove one field Matches the snapshot  1`] = `
+exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then remove one field 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -812,7 +681,7 @@ exports[`Selecting the type of radio buttons (select), add fields and input valu
 </div>
 `;
 
-exports[`Selecting the type of radio buttons Matches the snapshot  1`] = `
+exports[`Basic test fof showing overlay Open overlay and input value of label 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -844,7 +713,7 @@ exports[`Selecting the type of radio buttons Matches the snapshot  1`] = `
       <input
         onChange={[Function]}
         type="text"
-        value="Label value text"
+        value="Label value"
       />
     </label>
     <div
@@ -925,7 +794,7 @@ exports[`Selecting the type of radio buttons Matches the snapshot  1`] = `
     <textarea
       className="text-area"
       onChange={[Function]}
-      value="{\\"label\\":\\"Label value text\\",\\"type\\":\\"text\\"}"
+      value="{\\"label\\":\\"Label value\\",\\"type\\":\\"\\"}"
     />
     <button
       className="button"
@@ -943,7 +812,7 @@ exports[`Selecting the type of radio buttons Matches the snapshot  1`] = `
 </div>
 `;
 
-exports[`Selecting the type of radio buttons Matches the snapshot  2`] = `
+exports[`Selecting the type of radio buttons Select type checkbox 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -1074,7 +943,153 @@ exports[`Selecting the type of radio buttons Matches the snapshot  2`] = `
 </div>
 `;
 
-exports[`Selecting the type of radio buttons Matches the snapshot  3`] = `
+exports[`Selecting the type of radio buttons Select type radios 1`] = `
+<div>
+  <div
+    className="input-conntainer"
+  >
+    <input
+      className="input-field"
+      onClick={[Function]}
+      placeholder="Click here to for input text"
+      readOnly={true}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="overlay"
+    style={
+      Object {
+        "width": 500,
+      }
+    }
+  >
+    <h2>
+      Fill the form
+    </h2>
+    <label
+      className="label"
+    >
+      Label:
+      <input
+        onChange={[Function]}
+        type="text"
+        value="Label value radios"
+      />
+    </label>
+    <div
+      className="inputForm"
+    >
+      <div>
+        Type
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="text"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="text"
+          />
+          <label
+            htmlFor="text"
+          >
+            Textfiled
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="checkbox"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="checkbox"
+          />
+          <label
+            htmlFor="checkbox"
+          >
+            CheckBox
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="select"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="select"
+          />
+          <label
+            htmlFor="select"
+          >
+            Select
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="radios"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="radios"
+          />
+          <label
+            htmlFor="radios"
+          >
+            Radios
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>
+          ADD MORE OPTIONS
+        </label>
+        <form
+          className="options-form"
+        >
+          <button
+            className="button-option"
+            onClick={[Function]}
+          >
+            ADD
+          </button>
+        </form>
+      </div>
+    </div>
+    <textarea
+      className="text-area"
+      onChange={[Function]}
+      value="{\\"label\\":\\"Label value radios\\",\\"type\\":\\"radios\\",\\"options\\":[]}"
+    />
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Selecting the type of radio buttons Select type select 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -1220,7 +1235,7 @@ exports[`Selecting the type of radio buttons Matches the snapshot  3`] = `
 </div>
 `;
 
-exports[`Selecting the type of radio buttons Matches the snapshot  4`] = `
+exports[`Selecting the type of radio buttons Select type text 1`] = `
 <div>
   <div
     className="input-conntainer"
@@ -1252,7 +1267,7 @@ exports[`Selecting the type of radio buttons Matches the snapshot  4`] = `
       <input
         onChange={[Function]}
         type="text"
-        value="Label value radios"
+        value="Label value text"
       />
     </label>
     <div
@@ -1329,26 +1344,11 @@ exports[`Selecting the type of radio buttons Matches the snapshot  4`] = `
           </label>
         </div>
       </div>
-      <div>
-        <label>
-          ADD MORE OPTIONS
-        </label>
-        <form
-          className="options-form"
-        >
-          <button
-            className="button-option"
-            onClick={[Function]}
-          >
-            ADD
-          </button>
-        </form>
-      </div>
     </div>
     <textarea
       className="text-area"
       onChange={[Function]}
-      value="{\\"label\\":\\"Label value radios\\",\\"type\\":\\"radios\\",\\"options\\":[]}"
+      value="{\\"label\\":\\"Label value text\\",\\"type\\":\\"text\\"}"
     />
     <button
       className="button"

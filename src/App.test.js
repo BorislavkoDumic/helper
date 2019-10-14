@@ -15,8 +15,8 @@ import {
   cancel
 } from "./actions/index";
 
-describe("Open overlay and input value of label", () => {
-  it("Matches the snapshot", () => {
+describe("Basic test fof showing overlay", () => {
+  it("Open overlay and input value of label", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value"));
@@ -32,7 +32,7 @@ describe("Open overlay and input value of label", () => {
   });
 });
 describe("Selecting the type of radio buttons", () => {
-  it("Matches the snapshot ", () => {
+  it("Select type text", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value text"));
@@ -47,7 +47,7 @@ describe("Selecting the type of radio buttons", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it("Matches the snapshot ", () => {
+  it("Select type checkbox", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value checkbox"));
@@ -62,7 +62,7 @@ describe("Selecting the type of radio buttons", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it("Matches the snapshot ", () => {
+  it("Select type select", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value select"));
@@ -77,7 +77,7 @@ describe("Selecting the type of radio buttons", () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it("Matches the snapshot ", () => {
+  it("Select type radios", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value radios"));
@@ -93,8 +93,8 @@ describe("Selecting the type of radio buttons", () => {
     expect(tree).toMatchSnapshot();
   });
 });
-describe("Selecting the type of radio buttons (select), add fields and input values", () => {
-  it("Matches the snapshot ", () => {
+describe("Advanced tests of app ", () => {
+  it("Selecting the type of radio buttons (select), add fields and input values", () => {
     const store = createStore(reducer);
     store.dispatch(openOverlay());
     store.dispatch(changeLabel("Label value"));
@@ -115,106 +115,98 @@ describe("Selecting the type of radio buttons (select), add fields and input val
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  describe("Selecting the type of radio buttons (radios), add fields and input values then change the type (text)", () => {
-    it("Matches the snapshot ", () => {
-      const store = createStore(reducer);
-      store.dispatch(openOverlay());
-      store.dispatch(changeLabel("Label value"));
-      store.dispatch(changeType("radios"));
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(changeValue("1", 0));
-      store.dispatch(changeValue("2", 1));
-      store.dispatch(changeValue("3", 2));
-      store.dispatch(changeType("text"));
+  it("Selecting the type of radio buttons (radios), add fields and input values then change the type (text)", () => {
+    const store = createStore(reducer);
+    store.dispatch(openOverlay());
+    store.dispatch(changeLabel("Label value"));
+    store.dispatch(changeType("radios"));
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(changeValue("1", 0));
+    store.dispatch(changeValue("2", 1));
+    store.dispatch(changeValue("3", 2));
+    store.dispatch(changeType("text"));
 
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Input />
-          </Provider>
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Input />
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
-  describe("Selecting the type of radio buttons (select), add fields and input values then remove one field", () => {
-    it("Matches the snapshot ", () => {
-      const store = createStore(reducer);
-      store.dispatch(openOverlay());
-      store.dispatch(changeLabel("Label value"));
-      store.dispatch(changeType("select"));
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(changeValue("1", 0));
-      store.dispatch(changeValue("2", 1));
-      store.dispatch(changeValue("3", 2));
-      store.dispatch(removeField(1));
+  it("Selecting the type of radio buttons (select), add fields and input values then remove one field", () => {
+    const store = createStore(reducer);
+    store.dispatch(openOverlay());
+    store.dispatch(changeLabel("Label value"));
+    store.dispatch(changeType("select"));
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(changeValue("1", 0));
+    store.dispatch(changeValue("2", 1));
+    store.dispatch(changeValue("3", 2));
+    store.dispatch(removeField(1));
 
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Input />
-          </Provider>
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Input />
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
-  describe("Selecting the type of radio buttons (select), add fields and input values then click save button", () => {
-    it("Matches the snapshot ", () => {
-      const store = createStore(reducer);
-      store.dispatch(openOverlay());
-      store.dispatch(changeLabel("Label value"));
-      store.dispatch(changeType("select"));
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(changeValue("1", 0));
-      store.dispatch(changeValue("2", 1));
-      store.dispatch(changeValue("3", 2));
-      store.dispatch(
-        saveValues({
-          label: "Label Value",
-          type: "select",
-          options: ["1", "2", "3"]
-        })
-      );
+  it("Selecting the type of radio buttons (select), add fields and input values then click save button", () => {
+    const store = createStore(reducer);
+    store.dispatch(openOverlay());
+    store.dispatch(changeLabel("Label value"));
+    store.dispatch(changeType("select"));
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(changeValue("1", 0));
+    store.dispatch(changeValue("2", 1));
+    store.dispatch(changeValue("3", 2));
+    store.dispatch(
+      saveValues({
+        label: "Label Value",
+        type: "select",
+        options: ["1", "2", "3"]
+      })
+    );
 
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Input />
-          </Provider>
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Input />
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
-  describe("Selecting the type of radio buttons (select), add fields and input values then click cancel button", () => {
-    it("Matches the snapshot ", () => {
-      const store = createStore(reducer);
-      store.dispatch(openOverlay());
-      store.dispatch(changeLabel("Label value"));
-      store.dispatch(changeType("select"));
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(addField());
-      store.dispatch(changeValue("1", 0));
-      store.dispatch(changeValue("2", 1));
-      store.dispatch(changeValue("3", 2));
-      store.dispatch(cancel());
+  it("Selecting the type of radio buttons (select), add fields and input values then click cancel button", () => {
+    const store = createStore(reducer);
+    store.dispatch(openOverlay());
+    store.dispatch(changeLabel("Label value"));
+    store.dispatch(changeType("select"));
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(addField());
+    store.dispatch(changeValue("1", 0));
+    store.dispatch(changeValue("2", 1));
+    store.dispatch(changeValue("3", 2));
+    store.dispatch(cancel());
 
-      const tree = renderer
-        .create(
-          <Provider store={store}>
-            <Input />
-          </Provider>
-        )
-        .toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <Input />
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
