@@ -159,8 +159,7 @@ class Input extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.inputFields.showOverlay,
-    showOptions: state.inputFields.showOptions,
+    showOverlay: state.overlay.showOverlay,
     type: state.inputFields.type,
     options: state.inputFields.options,
     label: state.inputFields.label,

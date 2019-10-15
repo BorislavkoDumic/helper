@@ -1,5 +1,4 @@
 import {
-  OPEN_OVERLAY,
   CHANGE_TYPE,
   ADD_FIELD,
   REMOVE_FIELD,
@@ -10,7 +9,6 @@ import {
 } from "../utils/actionTypes";
 
 const initialState = {
-  showOverlay: false,
   type: "",
   options: [],
   label: "",
@@ -56,7 +54,6 @@ export default function inputReducer(state = initialState, action) {
       return {
         ...state,
         jsonString: action.valuesString,
-        showOverlay: false,
         options: [],
         label: " "
       };
@@ -66,11 +63,6 @@ export default function inputReducer(state = initialState, action) {
         options: [],
         label: " ",
         jsonString: ""
-      };
-    case OPEN_OVERLAY:
-      return {
-        ...state,
-        showOverlay: true
       };
     default:
       return state;
