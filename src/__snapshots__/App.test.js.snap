@@ -339,7 +339,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
       placeholder="Click here to for input text"
       readOnly={true}
       type="text"
-      value="Click here to for input text"
+      value=""
     />
   </div>
   <div

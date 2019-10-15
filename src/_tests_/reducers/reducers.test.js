@@ -36,7 +36,7 @@ describe("when action is clicked", () => {
     let newState = inputFields(state, changeType("select"));
     expect(inputFields(newState, changeType("select"))).toEqual(expectedState);
   });
-  it("Action for add field", () => {
+  it("Action for add two field", () => {
     const state = {
       options: []
     };
@@ -49,13 +49,12 @@ describe("when action is clicked", () => {
   });
   it("Action for remove field", () => {
     const state = {
-      options: [" "]
+      options: ["option1", "option2", "option3", "option4"]
     };
     const expectedState = {
-      options: []
+      options: ["option1", "option2", "option4"]
     };
 
-    let newState = inputFields(state, removeField());
-    expect(inputFields(newState, removeField())).toEqual(expectedState);
+    expect(inputFields(state, removeField(2))).toEqual(expectedState);
   });
 });

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Radios from "./Radios";
 import {
   openOverlay,
-  showOptions,
   addField,
   removeField,
+  changeType,
   changeValue,
   changeLabel,
   saveValues,
@@ -171,7 +171,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     openOverlay: () => dispatch(openOverlay()),
-    showOptions: value => dispatch(showOptions(value)),
+    changeType: value => dispatch(changeType(value)),
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),
     changeValue: (value, index) => dispatch(changeValue(value, index)),

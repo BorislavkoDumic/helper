@@ -45,10 +45,12 @@ export default function inputReducer(state = initialState, action) {
         options: [...state.options, ""]
       };
     case REMOVE_FIELD:
-      state.options.splice(action.index, 1);
       return {
         ...state,
-        options: state.options.filter(index => index !== action.index)
+        options: [
+          ...state.options.slice(0, action.index),
+          ...state.options.slice(action.index + 1)
+        ]
       };
     case SAVE_VALUES:
       return {
@@ -63,7 +65,7 @@ export default function inputReducer(state = initialState, action) {
         ...state,
         options: [],
         label: " ",
-        jsonString: "Click here to for input text"
+        jsonString: ""
       };
     case OPEN_OVERLAY:
       return {

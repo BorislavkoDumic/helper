@@ -3,11 +3,6 @@ import * as actionTypes from "../utils/actionTypes";
 export const openOverlay = () => ({
   type: actionTypes.OPEN_OVERLAY
 });
-
-export const showOptions = value => ({
-  type: actionTypes.SHOW_OPTIONS,
-  value
-});
 export const changeType = value => ({
   type: actionTypes.CHANGE_TYPE,
   value
