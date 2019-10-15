@@ -122,7 +122,7 @@ class Input extends Component {
                     label: "Radios"
                   }
                 ]}
-                changeType={this.changeType}
+                onChange={this.changeType}
               />
               {type === "select" || type === "radios" ? (
                 <div>

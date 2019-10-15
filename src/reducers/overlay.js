@@ -1,4 +1,4 @@
-import { OPEN_OVERLAY } from "../utils/actionTypes";
+import { OPEN_OVERLAY, SAVE_VALUES, CANCEL } from "../utils/actionTypes";
 
 const initialState = {
   showOverlay: false
@@ -10,6 +10,16 @@ export default function overlayReducer(state = initialState, action) {
       return {
         ...state,
         showOverlay: true
+      };
+    case SAVE_VALUES:
+      return {
+        ...state,
+        showOverlay: false
+      };
+    case CANCEL:
+      return {
+        ...state,
+        showOverlay: false
       };
     default:
       return state;
