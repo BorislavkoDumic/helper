@@ -5,7 +5,8 @@ import {
   CHANGE_VALUE,
   CHANGE_LABEL,
   SAVE_VALUES,
-  CANCEL
+  CANCEL,
+  GET_VALUES
 } from "../utils/actionTypes";
 
 const initialState = {
@@ -63,6 +64,13 @@ export default function inputReducer(state = initialState, action) {
         options: [],
         label: " ",
         jsonString: ""
+      };
+    case GET_VALUES:
+      return {
+        ...state,
+        jsonString: action.valuesString,
+        options: [],
+        label: " "
       };
     default:
       return state;

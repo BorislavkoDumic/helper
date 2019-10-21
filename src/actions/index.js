@@ -35,3 +35,6 @@ export const saveValues = valuesString => ({
 export const cancel = () => ({
   type: actionTypes.CANCEL
 });
+export const getValues = () => ({
+  type: actionTypes.GET_VALUES
+});
