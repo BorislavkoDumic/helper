@@ -61,7 +61,7 @@ class Input extends Component {
   };
 
   render() {
-    const { showOverlay, options, type, label, jsonString } = this.props;
+    const { options, type, label } = this.props;
     const uiElements = this.createUI(options);
 
     let jsonObject = {

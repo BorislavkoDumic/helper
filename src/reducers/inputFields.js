@@ -68,9 +68,9 @@ export default function inputReducer(state = initialState, action) {
     case GET_VALUES:
       return {
         ...state,
-        jsonString: action.valuesString,
         options: [],
-        label: " "
+        label: "",
+        type: ""
       };
     default:
       return state;
