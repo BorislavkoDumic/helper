@@ -6,4 +6,4 @@ export const CHANGE_VALUE = "CHANGE_VALUE";
 export const CHANGE_LABEL = "CHANGE_LABEL";
 export const SAVE_VALUES = "SAVE_VALUES";
 export const CANCEL = "CANCEL";
-export const GET_VALUES = "GET_VALUES";
+export const SET_VALUES = "SET_VALUES";

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Radios from "./Radios";
 import {
-  openOverlay,
   addField,
   removeField,
   changeType,
@@ -13,9 +12,6 @@ import {
 import { connect } from "react-redux";
 
 class Input extends Component {
-  openOverlay = () => {
-    this.props.openOverlay();
-  };
   changeType = value => {
     this.props.changeType(value);
   };
@@ -94,6 +90,7 @@ class Input extends Component {
             <Radios
               title="Type"
               name="type"
+              value="checkbox"
               options={[
                 {
                   value: "text",
@@ -148,7 +145,6 @@ class Input extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.overlay.showOverlay,
     type: state.inputFields.type,
     options: state.inputFields.options,
     label: state.inputFields.label,
@@ -158,7 +154,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openOverlay: () => dispatch(openOverlay()),
     changeType: value => dispatch(changeType(value)),
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),

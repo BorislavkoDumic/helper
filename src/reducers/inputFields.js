@@ -6,7 +6,7 @@ import {
   CHANGE_LABEL,
   SAVE_VALUES,
   CANCEL,
-  GET_VALUES
+  SET_VALUES
 } from "../utils/actionTypes";
 
 const initialState = {
@@ -65,12 +65,13 @@ export default function inputReducer(state = initialState, action) {
         label: " ",
         jsonString: ""
       };
-    case GET_VALUES:
+    case SET_VALUES:
+      console.log(action);
       return {
         ...state,
-        options: [],
-        label: "",
-        type: ""
+        options: [action.setFormValues.options],
+        label: action.setFormValues.label,
+        type: action.setFormValues.type
       };
     default:
       return state;

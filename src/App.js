@@ -8,9 +8,10 @@ import { getValues } from "./actions";
 const store = createStore(reducer);
 
 function App(props) {
-  if (props.values) {
-    store.dispatch(getValues(props.values));
+  if (props.parseValues) {
+    store.dispatch(getValues(props.parseValues));
   }
+  console.log(props.parseValues);
   return (
     <Provider store={store}>
       <Input changeTextfield={props.onChange} />
