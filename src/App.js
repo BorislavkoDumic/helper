@@ -3,15 +3,14 @@ import Input from "./components_redux/Input";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducer from "./reducers";
-import { getValues } from "./actions";
+import { setValues } from "./actions";
 
 const store = createStore(reducer);
 
 function App(props) {
   if (props.parseValues) {
-    store.dispatch(getValues(props.parseValues));
+    store.dispatch(setValues(props.parseValues));
   }
-  console.log(props.parseValues);
   return (
     <Provider store={store}>
       <Input changeTextfield={props.onChange} />

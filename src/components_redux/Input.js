@@ -90,7 +90,7 @@ class Input extends Component {
             <Radios
               title="Type"
               name="type"
-              value="checkbox"
+              value={type}
               options={[
                 {
                   value: "text",

@@ -66,10 +66,11 @@ export default function inputReducer(state = initialState, action) {
         jsonString: ""
       };
     case SET_VALUES:
-      console.log(action);
       return {
         ...state,
-        options: [action.setFormValues.options],
+        options: action.setFormValues.hasOwnProperty("options")
+          ? action.setFormValues.options
+          : [],
         label: action.setFormValues.label,
         type: action.setFormValues.type
       };

@@ -32,7 +32,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (radios), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="text"
             name="type"
             onChange={[Function]}
@@ -185,7 +185,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -370,7 +370,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -504,7 +504,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -638,7 +638,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -908,7 +908,7 @@ exports[`Selecting the type of radio buttons Select type checkbox 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="checkbox"
             name="type"
             onChange={[Function]}
@@ -1061,7 +1061,7 @@ exports[`Selecting the type of radio buttons Select type radios 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="radios"
             name="type"
             onChange={[Function]}
@@ -1178,7 +1178,7 @@ exports[`Selecting the type of radio buttons Select type select 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -1278,7 +1278,7 @@ exports[`Selecting the type of radio buttons Select type text 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="text"
             name="type"
             onChange={[Function]}
