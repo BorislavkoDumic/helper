@@ -3,18 +3,6 @@
 exports[`Advanced tests of app  Selecting the type of radio buttons (radios), add fields and input values then change the type (text) 1`] = `
 <div>
   <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
-  <div
     className="overlay"
     style={
       Object {
@@ -44,7 +32,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (radios), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="text"
             name="type"
             onChange={[Function]}
@@ -134,18 +122,6 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (radios), ad
 exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values 1`] = `
 <div>
   <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
-  <div
     className="overlay"
     style={
       Object {
@@ -209,7 +185,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -331,16 +307,133 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
 exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then click cancel button 1`] = `
 <div>
   <div
-    className="input-conntainer"
+    className="overlay"
+    style={
+      Object {
+        "width": 500,
+      }
+    }
   >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
+    <h2>
+      Fill the form
+    </h2>
+    <label
+      className="label"
+    >
+      Label:
+      <input
+        onChange={[Function]}
+        type="text"
+        value=" "
+      />
+    </label>
+    <div
+      className="inputForm"
+    >
+      <div>
+        Type
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="text"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="text"
+          />
+          <label
+            htmlFor="text"
+          >
+            Textfiled
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="checkbox"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="checkbox"
+          />
+          <label
+            htmlFor="checkbox"
+          >
+            CheckBox
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={true}
+            id="select"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="select"
+          />
+          <label
+            htmlFor="select"
+          >
+            Select
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="radios"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="radios"
+          />
+          <label
+            htmlFor="radios"
+          >
+            Radios
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>
+          ADD MORE OPTIONS
+        </label>
+        <form
+          className="options-form"
+        >
+          <button
+            className="button-option"
+            onClick={[Function]}
+          >
+            ADD
+          </button>
+        </form>
+      </div>
+    </div>
+    <textarea
+      className="text-area"
+      onChange={[Function]}
+      value="{\\"label\\":\\" \\",\\"type\\":\\"select\\",\\"options\\":[]}"
     />
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
   </div>
 </div>
 `;
@@ -348,44 +441,139 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
 exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then click save button 1`] = `
 <div>
   <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value={
-        Object {
-          "label": "Label Value",
-          "options": Array [
-            "1",
-            "2",
-            "3",
-          ],
-          "type": "select",
-        }
+    className="overlay"
+    style={
+      Object {
+        "width": 500,
       }
+    }
+  >
+    <h2>
+      Fill the form
+    </h2>
+    <label
+      className="label"
+    >
+      Label:
+      <input
+        onChange={[Function]}
+        type="text"
+        value=" "
+      />
+    </label>
+    <div
+      className="inputForm"
+    >
+      <div>
+        Type
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="text"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="text"
+          />
+          <label
+            htmlFor="text"
+          >
+            Textfiled
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="checkbox"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="checkbox"
+          />
+          <label
+            htmlFor="checkbox"
+          >
+            CheckBox
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={true}
+            id="select"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="select"
+          />
+          <label
+            htmlFor="select"
+          >
+            Select
+          </label>
+        </div>
+        <div
+          className="inputForm"
+        >
+          <input
+            checked={false}
+            id="radios"
+            name="type"
+            onChange={[Function]}
+            type="radio"
+            value="radios"
+          />
+          <label
+            htmlFor="radios"
+          >
+            Radios
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>
+          ADD MORE OPTIONS
+        </label>
+        <form
+          className="options-form"
+        >
+          <button
+            className="button-option"
+            onClick={[Function]}
+          >
+            ADD
+          </button>
+        </form>
+      </div>
+    </div>
+    <textarea
+      className="text-area"
+      onChange={[Function]}
+      value="{\\"label\\":\\" \\",\\"type\\":\\"select\\",\\"options\\":[]}"
     />
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
   </div>
 </div>
 `;
 
 exports[`Advanced tests of app  Selecting the type of radio buttons (select), add fields and input values then remove one field 1`] = `
 <div>
-  <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
   <div
     className="overlay"
     style={
@@ -450,7 +638,7 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -554,18 +742,6 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
 
 exports[`Basic test fof showing overlay Open overlay and input value of label 1`] = `
 <div>
-  <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
   <div
     className="overlay"
     style={
@@ -686,18 +862,6 @@ exports[`Basic test fof showing overlay Open overlay and input value of label 1`
 exports[`Selecting the type of radio buttons Select type checkbox 1`] = `
 <div>
   <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
-  <div
     className="overlay"
     style={
       Object {
@@ -744,7 +908,7 @@ exports[`Selecting the type of radio buttons Select type checkbox 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="checkbox"
             name="type"
             onChange={[Function]}
@@ -816,18 +980,6 @@ exports[`Selecting the type of radio buttons Select type checkbox 1`] = `
 
 exports[`Selecting the type of radio buttons Select type radios 1`] = `
 <div>
-  <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
   <div
     className="overlay"
     style={
@@ -909,7 +1061,7 @@ exports[`Selecting the type of radio buttons Select type radios 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="radios"
             name="type"
             onChange={[Function]}
@@ -962,18 +1114,6 @@ exports[`Selecting the type of radio buttons Select type radios 1`] = `
 
 exports[`Selecting the type of radio buttons Select type select 1`] = `
 <div>
-  <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
   <div
     className="overlay"
     style={
@@ -1038,7 +1178,7 @@ exports[`Selecting the type of radio buttons Select type select 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="select"
             name="type"
             onChange={[Function]}
@@ -1109,18 +1249,6 @@ exports[`Selecting the type of radio buttons Select type select 1`] = `
 exports[`Selecting the type of radio buttons Select type text 1`] = `
 <div>
   <div
-    className="input-conntainer"
-  >
-    <input
-      className="input-field"
-      onClick={[Function]}
-      placeholder="Click here to for input text"
-      readOnly={true}
-      type="text"
-      value=""
-    />
-  </div>
-  <div
     className="overlay"
     style={
       Object {
@@ -1150,7 +1278,7 @@ exports[`Selecting the type of radio buttons Select type text 1`] = `
           className="inputForm"
         >
           <input
-            checked={false}
+            checked={true}
             id="text"
             name="type"
             onChange={[Function]}

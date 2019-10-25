@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 
 export default class Radios extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   radioChange = event => {
-    this.setState({
-      type: event.target.value
-    });
     this.props.onChange(event.target.value);
   };
 
@@ -25,7 +17,7 @@ export default class Radios extends Component {
               name={this.props.name}
               value={option.value}
               onChange={this.radioChange}
-              checked={this.state.type === option.value}
+              checked={this.props.value === option.value}
             />
             <label htmlFor={option.value}>{option.label}</label>
           </div>

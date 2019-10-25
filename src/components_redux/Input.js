@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Radios from "./Radios";
 import {
-  openOverlay,
   addField,
   removeField,
   changeType,
@@ -13,9 +12,6 @@ import {
 import { connect } from "react-redux";
 
 class Input extends Component {
-  openOverlay = () => {
-    this.props.openOverlay();
-  };
   changeType = value => {
     this.props.changeType(value);
   };
@@ -54,13 +50,14 @@ class Input extends Component {
   };
   saveValues = valuesString => {
     this.props.saveValues(valuesString);
+    this.props.changeTextfield(valuesString);
   };
   cancel = () => {
     this.props.cancel();
   };
 
   render() {
-    const { showOverlay, options, type, label, jsonString } = this.props;
+    const { options, type, label } = this.props;
     const uiElements = this.createUI(options);
 
     let jsonObject = {
@@ -79,79 +76,68 @@ class Input extends Component {
 
     return (
       <div>
-        <div className="input-conntainer">
-          <input
-            onClick={this.openOverlay}
-            className="input-field"
-            type="text"
-            placeholder="Click here to for input text"
-            value={jsonString}
-            readOnly
-          ></input>
-        </div>
-        {showOverlay && (
-          <div className="overlay" style={{ width: 500 }}>
-            <h2>Fill the form</h2>
-            <label className="label">
-              Label:
-              <input
-                type="text"
-                onChange={this.changeLabel}
-                value={label}
-              ></input>
-            </label>
-            <div className="inputForm">
-              <Radios
-                title="Type"
-                name="type"
-                options={[
-                  {
-                    value: "text",
-                    label: "Textfiled"
-                  },
-                  {
-                    value: "checkbox",
-                    label: "CheckBox"
-                  },
-                  {
-                    value: "select",
-                    label: "Select"
-                  },
-                  {
-                    value: "radios",
-                    label: "Radios"
-                  }
-                ]}
-                onChange={this.changeType}
-              />
-              {type === "select" || type === "radios" ? (
-                <div>
-                  <label>ADD MORE OPTIONS</label>
-                  <form className="options-form">
-                    <button className="button-option" onClick={this.addField}>
-                      ADD
-                    </button>
-                    {uiElements}
-                  </form>
-                </div>
-              ) : null}
-            </div>
-            <textarea
-              className="text-area"
-              onChange={this.changeValue}
-              value={valuesString}
-            ></textarea>
-            <button
-              className="button"
-              onClick={() => this.saveValues(valuesString)}
-            >
-              Save
-            </button>
-            <button className="button" onClick={this.cancel}>
-              Cancel
-            </button>
+        <div className="overlay" style={{ width: 500 }}>
+          <h2>Fill the form</h2>
+          <label className="label">
+            Label:
+            <input
+              type="text"
+              onChange={this.changeLabel}
+              value={label}
+            ></input>
+          </label>
+          <div className="inputForm">
+            <Radios
+              title="Type"
+              name="type"
+              value={type}
+              options={[
+                {
+                  value: "text",
+                  label: "Textfiled"
+                },
+                {
+                  value: "checkbox",
+                  label: "CheckBox"
+                },
+                {
+                  value: "select",
+                  label: "Select"
+                },
+                {
+                  value: "radios",
+                  label: "Radios"
+                }
+              ]}
+              onChange={this.changeType}
+            />
+            {type === "select" || type === "radios" ? (
+              <div>
+                <label>ADD MORE OPTIONS</label>
+                <form className="options-form">
+                  <button className="button-option" onClick={this.addField}>
+                    ADD
+                  </button>
+                  {uiElements}
+                </form>
+              </div>
+            ) : null}
           </div>
-        )}
+          <textarea
+            className="text-area"
+            onChange={this.changeValue}
+            value={valuesString}
+          ></textarea>
+          <button
+            className="button"
+            onClick={() => this.saveValues(valuesString)}
+          >
+            Save
+          </button>
+          <button className="button" onClick={this.cancel}>
+            Cancel
+          </button>
+        </div>
       </div>
     );
   }
@@ -159,7 +145,6 @@ class Input extends Component {
 
 const mapStateToProps = state => {
   return {
-    showOverlay: state.overlay.showOverlay,
     type: state.inputFields.type,
     options: state.inputFields.options,
     label: state.inputFields.label,
@@ -169,7 +154,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openOverlay: () => dispatch(openOverlay()),
     changeType: value => dispatch(changeType(value)),
     addField: () => dispatch(addField()),
     removeField: i => dispatch(removeField(i)),
