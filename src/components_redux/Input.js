@@ -94,7 +94,8 @@ class Input extends Component {
               options={[
                 {
                   value: "text",
-                  label: "Textfiled"
+                  label: "Textfiled",
+                  onChange: {}
                 },
                 {
                   value: "checkbox",
