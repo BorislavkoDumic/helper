@@ -13,7 +13,7 @@ function App(props) {
   }
   return (
     <Provider store={store}>
-      <Input changeTextfield={props.onChange} />
+      <Input changeTextfield={props.onChange} closeForm={props.closeForm} />
     </Provider>
   );
 }

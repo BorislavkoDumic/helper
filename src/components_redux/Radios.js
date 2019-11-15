@@ -8,9 +8,17 @@ export default class Radios extends Component {
   render() {
     return (
       <div>
-        {this.props.title}
         {this.props.options.map((option, i) => (
-          <div key={i} className="inputForm">
+          <div
+            key={i}
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={{
+              marginRight: "10px",
+              marginLeft: "15px",
+              display: "inline-flex",
+              textAlign: "center"
+            }}
+          >
             <input
               id={option.value}
               type="radio"
@@ -19,7 +27,12 @@ export default class Radios extends Component {
               onChange={this.radioChange}
               checked={this.props.value === option.value}
             />
-            <label htmlFor={option.value}>{option.label}</label>
+            <label
+              style={{ marginLeft: "5px", marginTop: "-1px" }}
+              htmlFor={option.value}
+            >
+              {option.label}
+            </label>
           </div>
         ))}
       </div>

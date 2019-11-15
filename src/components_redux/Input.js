@@ -20,6 +20,7 @@ class Input extends Component {
       <div key={i}>
         <label>Value</label>
         <input
+          style={{ width: "240px" }}
           className="input-option"
           type="text"
           onChange={this.changeValue(i)}
@@ -27,8 +28,8 @@ class Input extends Component {
         />
         <input
           type="button"
-          className="button-option"
-          value="DELETE"
+          className="button"
+          value="Delete"
           onClick={this.removeField(i)}
         />
       </div>
@@ -53,7 +54,7 @@ class Input extends Component {
     this.props.changeTextfield(valuesString);
   };
   cancel = () => {
-    this.props.cancel();
+    this.props.closeForm();
   };
 
   render() {
@@ -76,68 +77,95 @@ class Input extends Component {
 
     return (
       <div>
-        <div className="overlay" style={{ width: 500 }}>
-          <h2>Fill the form</h2>
-          <label className="label">
-            Label:
-            <input
-              type="text"
-              onChange={this.changeLabel}
-              value={label}
-            ></input>
-          </label>
-          <div className="inputForm">
-            <Radios
-              title="Type"
-              name="type"
-              value={type}
-              options={[
-                {
-                  value: "text",
-                  label: "Textfiled",
-                  onChange: {}
-                },
-                {
-                  value: "checkbox",
-                  label: "CheckBox"
-                },
-                {
-                  value: "select",
-                  label: "Select"
-                },
-                {
-                  value: "radios",
-                  label: "Radios"
-                }
-              ]}
-              onChange={this.changeType}
-            />
-            {type === "select" || type === "radios" ? (
-              <div>
-                <label>ADD MORE OPTIONS</label>
-                <form className="options-form">
-                  <button className="button-option" onClick={this.addField}>
-                    ADD
-                  </button>
-                  {uiElements}
-                </form>
-              </div>
-            ) : null}
+        <div>
+          <div className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix">
+            <span
+              className="dialog-title"
+              style={{ fontSize: 15, color: "white" }}
+            >
+              Fill the form
+            </span>
+            <button
+              title="CLose"
+              className="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+              onClick={this.cancel}
+            >
+              <span className="ui-button-icon ui-icon ui-icon-closethick"></span>
+              <span className="ui-button-icon-space"></span>
+            </button>
           </div>
-          <textarea
-            className="text-area"
-            onChange={this.changeValue}
-            value={valuesString}
-          ></textarea>
-          <button
-            className="button"
-            onClick={() => this.saveValues(valuesString)}
+          <div
+            className="ui-front ui-dialog-content ui-widget-content"
+            style={{ width: "auto" }}
           >
-            Save
-          </button>
-          <button className="button" onClick={this.cancel}>
-            Cancel
-          </button>
+            <label className="label">
+              Label:
+              <input
+                type="text"
+                onChange={this.changeLabel}
+                value={label}
+                style={{ width: "-webkit-fill-available" }}
+              ></input>
+            </label>
+            <div className="inputForm">
+              <label>Type</label>
+              <Radios
+                name="type"
+                value={type}
+                options={[
+                  {
+                    value: "text",
+                    label: "Textfiled"
+                  },
+                  {
+                    value: "checkbox",
+                    label: "Checkbox"
+                  },
+                  {
+                    value: "select",
+                    label: "Select"
+                  },
+                  {
+                    value: "radios",
+                    label: "Radios"
+                  }
+                ]}
+                onChange={this.changeType}
+              />
+              {type === "select" || type === "radios" ? (
+                <div>
+                  <form
+                    className="options-form"
+                    style={{ marginBottom: "10px" }}
+                  >
+                    <button
+                      style={{ marginLeft: "30%" }}
+                      className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+                      onClick={this.addField}
+                    >
+                      Add more options
+                    </button>
+                    {uiElements}
+                  </form>
+                </div>
+              ) : null}
+            </div>
+            <textarea
+              className="text-area"
+              onChange={this.changeValue}
+              value={valuesString}
+              style={{ width: "-webkit-fill-available", height: "50px" }}
+            ></textarea>
+          </div>
+          <div className="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button
+              type="button"
+              className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+              onClick={() => this.saveValues(valuesString)}
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     );

@@ -57,6 +57,23 @@
       />
     </div>
 
+    <script>
+      // without jQuery (doesn't work in older IEs)
+      document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+          var jsonSH = new JsonSelectionHelper({
+            className: "jsonHelper",
+            idForm: "biologis-json-converter-helper",
+            classForm:
+              "ui-dialog ui-corner-all ui-widget ui-widget-content ui-front",
+            classOverlay: "ui-widget-overlay ui-front"
+          });
+          jsonSH.jsonHelper(document);
+        },
+        false
+      );
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
