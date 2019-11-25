@@ -35,7 +35,7 @@ export const saveValues = valuesString => ({
 export const cancel = () => ({
   type: actionTypes.CANCEL
 });
-export const setValues = setFormValues => ({
+export const setValues = jsonString => ({
   type: actionTypes.SET_VALUES,
-  setFormValues
+  jsonString
 });

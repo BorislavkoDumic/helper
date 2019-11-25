@@ -13,8 +13,24 @@ const initialState = {
   type: "",
   options: [],
   label: "",
-  jsonString: ""
+  jsonString: "",
+  inputErrorType: false,
+  inputErrorOptions: false,
+  inputErrorJson: false
 };
+function isValidType(type) {
+  if (!["checkbox", "text", "select", "radios", ""].includes(type)) {
+    return false;
+  }
+  return true;
+}
+function isValidOptions(options) {
+  if (Array.isArray(options) && options.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_TYPE:
@@ -56,7 +72,8 @@ export default function inputReducer(state = initialState, action) {
         ...state,
         jsonString: action.valuesString,
         options: [],
-        label: " "
+        label: " ",
+        inputErrorType: isValidType(action.type)
       };
     case CANCEL:
       return {
@@ -66,13 +83,28 @@ export default function inputReducer(state = initialState, action) {
         jsonString: ""
       };
     case SET_VALUES:
+      let parseError = false;
+      let parsedValues = { label: "", type: "", options: [] };
+      try {
+        parsedValues = JSON.parse(action.jsonString);
+      } catch (e) {
+        parseError = true;
+      }
+
       return {
         ...state,
-        options: action.setFormValues.hasOwnProperty("options")
-          ? action.setFormValues.options
+        options: parsedValues.hasOwnProperty("options")
+          ? parsedValues.options
           : [],
-        label: action.setFormValues.label,
-        type: action.setFormValues.type
+        label: parsedValues.label,
+        type: parsedValues.type,
+        parsedValues: parsedValues,
+        inputErrorType: !isValidType(parsedValues.type),
+        inputErrorOptions:
+          parsedValues.type === "select" || parsedValues.type === "radios"
+            ? !isValidOptions(parsedValues.options)
+            : false,
+        inputErrorJson: parseError
       };
     default:
       return state;

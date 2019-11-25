@@ -5,11 +5,14 @@ import { createStore } from "redux";
 import reducer from "./reducers";
 import { setValues } from "./actions";
 
-const store = createStore(reducer);
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 function App(props) {
-  if (props.parseValues) {
-    store.dispatch(setValues(props.parseValues));
+  if (props.inputValue) {
+    store.dispatch(setValues(props.inputValue));
   }
   return (
     <Provider store={store}>

@@ -51,51 +51,20 @@ class JsonSelectionHelper {
     this.formElement.style.display = "none";
     this.overlayElement.style.display = "none";
   };
-  isJson = str => {
-    try {
-      JSON.parse(str);
-    } catch (e) {
-      return false;
-    }
-    return true;
-  };
-  isValidInput = input => {
-    if (
-      !input.hasOwnProperty("type") ||
-      !["checkbox", "text", "select", "radios"].includes(input.type)
-    ) {
-      return false;
-    } else if (
-      input.hasOwnProperty("options") &&
-      !Array.isArray(input.options)
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  };
   callRender = event => {
     this.formElement.style.display = "block";
     this.overlayElement.style.display = "block";
 
-    let parsedValues = { label: "", type: "", options: [] };
-    if (this.isJson(event.target.value)) {
-      parsedValues = JSON.parse(event.target.value);
-    }
-    if (event.target.value !== "" && !this.isValidInput(parsedValues)) {
-      alert("Input is not a valid JSON string or is not formatted correctly!");
-    } else {
-      ReactDOM.render(
-        <App
-          parseValues={parsedValues}
-          onChange={valuesString =>
-            this.changeInputText(event.target, valuesString)
-          }
-          closeForm={this.closeForm}
-        />,
-        this.formElement
-      );
-    }
+    ReactDOM.render(
+      <App
+        inputValue={event.target.value}
+        onChange={valuesString =>
+          this.changeInputText(event.target, valuesString)
+        }
+        closeForm={this.closeForm}
+      />,
+      this.formElement
+    );
   };
 }
 
