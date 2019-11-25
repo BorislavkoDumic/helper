@@ -56,7 +56,6 @@ class Input extends Component {
   cancel = () => {
     this.props.closeForm();
   };
-
   render() {
     const { options, type, label } = this.props;
     const uiElements = this.createUI(options);
@@ -98,34 +97,13 @@ class Input extends Component {
             className="ui-front ui-dialog-content ui-widget-content"
             style={{ width: "auto" }}
           >
-            <div>
-              {this.props.inputErrorType ? (
-                <span style={{ color: "red", fontSize: 15 }}>
-                  ERROR:Value of Type is incorrect!
-                </span>
-              ) : (
-                ""
-              )}
-            </div>
-            <div>
-              {this.props.inputErrorOptions ? (
-                <span style={{ color: "red", fontSize: 15 }}>
-                  ERROR:Value of Options is incorrect!
-                </span>
-              ) : (
-                ""
-              )}
-            </div>
-            <div>
-              {this.props.inputErrorJson ? (
-                <span style={{ color: "red", fontSize: 15 }}>
-                  ERROR: Input is not a valid JSON string or is not formatted
-                  correctly!
-                </span>
-              ) : (
-                ""
-              )}
-            </div>
+            {this.props.errors.map(item => {
+              return (
+                <div>
+                  <span style={{ color: "red", fontSize: 15 }}>{item}</span>
+                </div>
+              );
+            })}
             <label className="label">
               Label:
               <input
@@ -205,9 +183,7 @@ const mapStateToProps = state => {
     type: state.inputFields.type,
     options: state.inputFields.options,
     label: state.inputFields.label,
-    inputErrorType: state.inputFields.inputErrorType,
-    inputErrorOptions: state.inputFields.inputErrorOptions,
-    inputErrorJson: state.inputFields.inputErrorJson
+    errors: state.inputFields.errors
   };
 };
 

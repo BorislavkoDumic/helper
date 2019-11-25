@@ -14,10 +14,16 @@ const initialState = {
   options: [],
   label: "",
   jsonString: "",
-  inputErrorType: false,
-  inputErrorOptions: false,
-  inputErrorJson: false
+  errors: []
 };
+
+const errorMessages = {
+  errorType: "ERROR:Value of Type is incorrect!",
+  errorOptions: "ERROR:Value of Options is incorrect!",
+  errorJSON:
+    "ERROR: Input is not a valid JSON string or is not formatted correctly!"
+};
+
 function isValidType(type) {
   if (!["checkbox", "text", "select", "radios", ""].includes(type)) {
     return false;
@@ -83,12 +89,28 @@ export default function inputReducer(state = initialState, action) {
         jsonString: ""
       };
     case SET_VALUES:
-      let parseError = false;
       let parsedValues = { label: "", type: "", options: [] };
+      let errorJSON = false;
       try {
         parsedValues = JSON.parse(action.jsonString);
       } catch (e) {
-        parseError = true;
+        errorJSON = true;
+      }
+      const errorType = !isValidType(parsedValues.type);
+      const errorOptions =
+        parsedValues.type === "select" || parsedValues.type === "radios"
+          ? !isValidOptions(parsedValues.options)
+          : false;
+
+      let errors = [];
+      if (errorJSON) {
+        errors.push(errorMessages["errorJSON"]);
+      }
+      if (errorType) {
+        errors.push(errorMessages["errorType"]);
+      }
+      if (errorOptions) {
+        errors.push(errorMessages["errorOptions"]);
       }
 
       return {
@@ -99,12 +121,7 @@ export default function inputReducer(state = initialState, action) {
         label: parsedValues.label,
         type: parsedValues.type,
         parsedValues: parsedValues,
-        inputErrorType: !isValidType(parsedValues.type),
-        inputErrorOptions:
-          parsedValues.type === "select" || parsedValues.type === "radios"
-            ? !isValidOptions(parsedValues.options)
-            : false,
-        inputErrorJson: parseError
+        errors: errors
       };
     default:
       return state;
