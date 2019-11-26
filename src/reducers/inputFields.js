@@ -77,8 +77,7 @@ export default function inputReducer(state = initialState, action) {
         ...state,
         jsonString: action.valuesString,
         options: [],
-        label: " ",
-        inputErrorType: isValidType(action.type)
+        label: " "
       };
     case CANCEL:
       return {
