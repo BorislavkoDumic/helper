@@ -97,9 +97,9 @@ class Input extends Component {
             className="ui-front ui-dialog-content ui-widget-content"
             style={{ width: "auto" }}
           >
-            {this.props.errors.map(item => {
+            {this.props.errors.map((item, i) => {
               return (
-                <div>
+                <div key={i}>
                   <span style={{ color: "red", fontSize: 15 }}>{item}</span>
                 </div>
               );

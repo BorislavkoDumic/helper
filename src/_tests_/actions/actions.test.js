@@ -6,7 +6,8 @@ import {
   CHANGE_VALUE,
   CHANGE_LABEL,
   SAVE_VALUES,
-  CANCEL
+  CANCEL,
+  SET_VALUES
 } from "../../utils/actionTypes";
 import {
   openOverlay,
@@ -16,7 +17,8 @@ import {
   changeValue,
   changeLabel,
   saveValues,
-  cancel
+  cancel,
+  setValues
 } from "../../actions/index";
 
 describe("displayActions", () => {
@@ -73,5 +75,14 @@ describe("displayActions", () => {
       type: CANCEL
     };
     expect(cancel()).toEqual(expectedAction);
+  });
+  it("Creates an action for set the values", () => {
+    const expectedAction = {
+      type: SET_VALUES,
+      jsonString: '{"label":"123","type":"checkbox"}'
+    };
+    expect(setValues('{"label":"123","type":"checkbox"}')).toEqual(
+      expectedAction
+    );
   });
 });
