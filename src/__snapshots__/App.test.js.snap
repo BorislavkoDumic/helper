@@ -1310,7 +1310,8 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             }
           }
         >
-          ERROR: Input is not a valid JSON string or is not formatted correctly!
+          ERROR: 
+          Input is not a valid JSON string or is not formatted correctly!
         </span>
       </div>
       <label
@@ -1535,7 +1536,8 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             }
           }
         >
-          ERROR: Input is not a valid JSON string or is not formatted correctly!
+          ERROR: 
+          Value of Options is incorrect!
         </span>
       </div>
       <label
@@ -1550,7 +1552,7 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             }
           }
           type="text"
-          value=""
+          value="12"
         />
       </label>
       <div
@@ -1665,7 +1667,7 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             }
           >
             <input
-              checked={false}
+              checked={true}
               id="radios"
               name="type"
               onChange={[Function]}
@@ -1685,6 +1687,28 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             </label>
           </div>
         </div>
+        <div>
+          <form
+            className="options-form"
+            style={
+              Object {
+                "marginBottom": "10px",
+              }
+            }
+          >
+            <button
+              className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+              onClick={[Function]}
+              style={
+                Object {
+                  "marginLeft": "30%",
+                }
+              }
+            >
+              Add more options
+            </button>
+          </form>
+        </div>
       </div>
       <textarea
         className="text-area"
@@ -1695,7 +1719,7 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             "width": "-webkit-fill-available",
           }
         }
-        value="{\\"label\\":\\"\\",\\"type\\":\\"\\"}"
+        value="{\\"label\\":\\"12\\",\\"type\\":\\"radios\\",\\"options\\":[]}"
       />
     </div>
     <div
@@ -1760,7 +1784,8 @@ exports[`Advanced tests of app  Show error messages Show error message for incor
             }
           }
         >
-          ERROR:Value of Type is incorrect!
+          ERROR: 
+          Value of Type is incorrect!
         </span>
       </div>
       <label

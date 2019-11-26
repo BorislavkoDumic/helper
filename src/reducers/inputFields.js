@@ -18,10 +18,9 @@ const initialState = {
 };
 
 const errorMessages = {
-  errorType: "ERROR:Value of Type is incorrect!",
-  errorOptions: "ERROR:Value of Options is incorrect!",
-  errorJSON:
-    "ERROR: Input is not a valid JSON string or is not formatted correctly!"
+  errorType: "Value of Type is incorrect!",
+  errorOptions: "Value of Options is incorrect!",
+  errorJSON: "Input is not a valid JSON string or is not formatted correctly!"
 };
 
 function isValidType(type) {

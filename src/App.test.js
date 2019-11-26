@@ -228,7 +228,7 @@ describe("Advanced tests of app ", () => {
     });
     it("Show error message for incorrect options", () => {
       let inputValue =
-        '"{"label":"12","type":"select","incorrectOptions":["12","12","12"]}"';
+        '{"label":"12","type":"radios","incorrectOptions":["12","12","12"]}';
       const store = createStore(reducer);
       store.dispatch(openOverlay());
       store.dispatch(setValues(inputValue));

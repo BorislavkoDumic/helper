@@ -100,7 +100,9 @@ class Input extends Component {
             {this.props.errors.map((item, i) => {
               return (
                 <div key={i}>
-                  <span style={{ color: "red", fontSize: 15 }}>{item}</span>
+                  <span style={{ color: "red", fontSize: 15 }}>
+                    ERROR: {item}
+                  </span>
                 </div>
               );
             })}
