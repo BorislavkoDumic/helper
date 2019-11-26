@@ -12,7 +12,8 @@ import {
   changeValue,
   removeField,
   saveValues,
-  cancel
+  cancel,
+  setValues
 } from "./actions/index";
 
 describe("Basic test fof showing overlay", () => {
@@ -208,5 +209,54 @@ describe("Advanced tests of app ", () => {
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
+  });
+  describe("Show error messages", () => {
+    it("Show error message for incorrect type", () => {
+      let inputValue = '{"label":"123", "type":"incorrectType"}';
+      const store = createStore(reducer);
+      store.dispatch(openOverlay());
+      store.dispatch(setValues(inputValue));
+
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Input />
+          </Provider>
+        )
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it("Show error message for incorrect options", () => {
+      let inputValue =
+        '{"label":"12","type":"radios","incorrectOptions":["12","12","12"]}';
+      const store = createStore(reducer);
+      store.dispatch(openOverlay());
+      store.dispatch(setValues(inputValue));
+
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Input />
+          </Provider>
+        )
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it("Show error message for incorrect JSON", () => {
+      let inputValue =
+        '"{"label":"12","type":"select","options":["12","12","12"]"';
+      const store = createStore(reducer);
+      store.dispatch(openOverlay());
+      store.dispatch(setValues(inputValue));
+
+      const tree = renderer
+        .create(
+          <Provider store={store}>
+            <Input />
+          </Provider>
+        )
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 });

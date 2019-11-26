@@ -13,8 +13,29 @@ const initialState = {
   type: "",
   options: [],
   label: "",
-  jsonString: ""
+  jsonString: "",
+  errors: []
 };
+
+const errorMessages = {
+  errorType: "Value of Type is incorrect!",
+  errorOptions: "Value of Options is incorrect!",
+  errorJSON: "Input is not a valid JSON string or is not formatted correctly!"
+};
+
+function isValidType(type) {
+  if (!["checkbox", "text", "select", "radios", ""].includes(type)) {
+    return false;
+  }
+  return true;
+}
+function isValidOptions(options) {
+  if (Array.isArray(options) && options.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 export default function inputReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_TYPE:
@@ -66,13 +87,39 @@ export default function inputReducer(state = initialState, action) {
         jsonString: ""
       };
     case SET_VALUES:
+      let parsedValues = { label: "", type: "", options: [] };
+      let errorJSON = false;
+      try {
+        parsedValues = JSON.parse(action.jsonString);
+      } catch (e) {
+        errorJSON = true;
+      }
+      const errorType = !isValidType(parsedValues.type);
+      const errorOptions =
+        parsedValues.type === "select" || parsedValues.type === "radios"
+          ? !isValidOptions(parsedValues.options)
+          : false;
+
+      let errors = [];
+      if (errorJSON) {
+        errors.push(errorMessages["errorJSON"]);
+      }
+      if (errorType) {
+        errors.push(errorMessages["errorType"]);
+      }
+      if (errorOptions) {
+        errors.push(errorMessages["errorOptions"]);
+      }
+
       return {
         ...state,
-        options: action.setFormValues.hasOwnProperty("options")
-          ? action.setFormValues.options
+        options: parsedValues.hasOwnProperty("options")
+          ? parsedValues.options
           : [],
-        label: action.setFormValues.label,
-        type: action.setFormValues.type
+        label: parsedValues.label,
+        type: parsedValues.type,
+        parsedValues: parsedValues,
+        errors: errors
       };
     default:
       return state;

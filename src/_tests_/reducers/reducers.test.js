@@ -3,7 +3,8 @@ import {
   changeType,
   changeLabel,
   addField,
-  removeField
+  removeField,
+  setValues
 } from "../../actions/index";
 
 describe("when action is clicked", () => {
@@ -19,14 +20,12 @@ describe("when action is clicked", () => {
 
   it("Action for change the type", () => {
     const state = {
-      // showOptions: false,
       type: "",
       options: [],
       label: "",
       jsonString: ""
     };
     const expectedState = {
-      // showOptions: true,
       type: "select",
       options: [],
       label: "",
@@ -56,5 +55,38 @@ describe("when action is clicked", () => {
     };
 
     expect(inputFields(state, removeField(2))).toEqual(expectedState);
+  });
+  it("Action for set values", () => {
+    const state = {
+      type: "",
+      options: [],
+      label: "",
+      parsedValues: "",
+      errors: []
+    };
+    const expectedState = {
+      type: "select",
+      options: ["1", "2", "3"],
+      label: "New label",
+      parsedValues: {
+        label: "New label",
+        type: "select",
+        options: ["1", "2", "3"]
+      },
+      errors: []
+    };
+
+    let newState = inputFields(
+      state,
+      setValues('{"label":"New label","type":"select","options":["1","2","3"]}')
+    );
+    expect(
+      inputFields(
+        newState,
+        setValues(
+          '{"label":"New label","type":"select","options":["1","2","3"]}'
+        )
+      )
+    ).toEqual(expectedState);
   });
 });

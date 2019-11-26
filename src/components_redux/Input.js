@@ -56,7 +56,6 @@ class Input extends Component {
   cancel = () => {
     this.props.closeForm();
   };
-
   render() {
     const { options, type, label } = this.props;
     const uiElements = this.createUI(options);
@@ -98,6 +97,15 @@ class Input extends Component {
             className="ui-front ui-dialog-content ui-widget-content"
             style={{ width: "auto" }}
           >
+            {this.props.errors.map((item, i) => {
+              return (
+                <div key={i}>
+                  <span style={{ color: "red", fontSize: 15 }}>
+                    ERROR: {item}
+                  </span>
+                </div>
+              );
+            })}
             <label className="label">
               Label:
               <input
@@ -151,8 +159,8 @@ class Input extends Component {
               ) : null}
             </div>
             <textarea
+              onChange={changeValue}
               className="text-area"
-              onChange={this.changeValue}
               value={valuesString}
               style={{ width: "-webkit-fill-available", height: "50px" }}
             ></textarea>
@@ -177,7 +185,7 @@ const mapStateToProps = state => {
     type: state.inputFields.type,
     options: state.inputFields.options,
     label: state.inputFields.label,
-    jsonString: state.inputFields.jsonString
+    errors: state.inputFields.errors
   };
 };
 
@@ -193,7 +201,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Input);
+export default connect(mapStateToProps, mapDispatchToProps)(Input);

@@ -1263,6 +1263,706 @@ exports[`Advanced tests of app  Selecting the type of radio buttons (select), ad
 </div>
 `;
 
+exports[`Advanced tests of app  Show error messages Show error message for incorrect JSON 1`] = `
+<div>
+  <div>
+    <div
+      className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"
+    >
+      <span
+        className="dialog-title"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 15,
+          }
+        }
+      >
+        Fill the form
+      </span>
+      <button
+        className="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+        onClick={[Function]}
+        title="CLose"
+      >
+        <span
+          className="ui-button-icon ui-icon ui-icon-closethick"
+        />
+        <span
+          className="ui-button-icon-space"
+        />
+      </button>
+    </div>
+    <div
+      className="ui-front ui-dialog-content ui-widget-content"
+      style={
+        Object {
+          "width": "auto",
+        }
+      }
+    >
+      <div>
+        <span
+          style={
+            Object {
+              "color": "red",
+              "fontSize": 15,
+            }
+          }
+        >
+          ERROR: 
+          Input is not a valid JSON string or is not formatted correctly!
+        </span>
+      </div>
+      <label
+        className="label"
+      >
+        Label:
+        <input
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "-webkit-fill-available",
+            }
+          }
+          type="text"
+          value=""
+        />
+      </label>
+      <div
+        className="inputForm"
+      >
+        <label>
+          Type
+        </label>
+        <div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="text"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="text"
+            />
+            <label
+              htmlFor="text"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Textfiled
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="checkbox"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="checkbox"
+            />
+            <label
+              htmlFor="checkbox"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Checkbox
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="select"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="select"
+            />
+            <label
+              htmlFor="select"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Select
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="radios"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="radios"
+            />
+            <label
+              htmlFor="radios"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Radios
+            </label>
+          </div>
+        </div>
+      </div>
+      <textarea
+        className="text-area"
+        onChange={[Function]}
+        style={
+          Object {
+            "height": "50px",
+            "width": "-webkit-fill-available",
+          }
+        }
+        value="{\\"label\\":\\"\\",\\"type\\":\\"\\"}"
+      />
+    </div>
+    <div
+      className="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"
+    >
+      <button
+        className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Advanced tests of app  Show error messages Show error message for incorrect options 1`] = `
+<div>
+  <div>
+    <div
+      className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"
+    >
+      <span
+        className="dialog-title"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 15,
+          }
+        }
+      >
+        Fill the form
+      </span>
+      <button
+        className="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+        onClick={[Function]}
+        title="CLose"
+      >
+        <span
+          className="ui-button-icon ui-icon ui-icon-closethick"
+        />
+        <span
+          className="ui-button-icon-space"
+        />
+      </button>
+    </div>
+    <div
+      className="ui-front ui-dialog-content ui-widget-content"
+      style={
+        Object {
+          "width": "auto",
+        }
+      }
+    >
+      <div>
+        <span
+          style={
+            Object {
+              "color": "red",
+              "fontSize": 15,
+            }
+          }
+        >
+          ERROR: 
+          Value of Options is incorrect!
+        </span>
+      </div>
+      <label
+        className="label"
+      >
+        Label:
+        <input
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "-webkit-fill-available",
+            }
+          }
+          type="text"
+          value="12"
+        />
+      </label>
+      <div
+        className="inputForm"
+      >
+        <label>
+          Type
+        </label>
+        <div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="text"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="text"
+            />
+            <label
+              htmlFor="text"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Textfiled
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="checkbox"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="checkbox"
+            />
+            <label
+              htmlFor="checkbox"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Checkbox
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="select"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="select"
+            />
+            <label
+              htmlFor="select"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Select
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={true}
+              id="radios"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="radios"
+            />
+            <label
+              htmlFor="radios"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Radios
+            </label>
+          </div>
+        </div>
+        <div>
+          <form
+            className="options-form"
+            style={
+              Object {
+                "marginBottom": "10px",
+              }
+            }
+          >
+            <button
+              className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+              onClick={[Function]}
+              style={
+                Object {
+                  "marginLeft": "30%",
+                }
+              }
+            >
+              Add more options
+            </button>
+          </form>
+        </div>
+      </div>
+      <textarea
+        className="text-area"
+        onChange={[Function]}
+        style={
+          Object {
+            "height": "50px",
+            "width": "-webkit-fill-available",
+          }
+        }
+        value="{\\"label\\":\\"12\\",\\"type\\":\\"radios\\",\\"options\\":[]}"
+      />
+    </div>
+    <div
+      className="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"
+    >
+      <button
+        className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Advanced tests of app  Show error messages Show error message for incorrect type 1`] = `
+<div>
+  <div>
+    <div
+      className="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"
+    >
+      <span
+        className="dialog-title"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 15,
+          }
+        }
+      >
+        Fill the form
+      </span>
+      <button
+        className="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+        onClick={[Function]}
+        title="CLose"
+      >
+        <span
+          className="ui-button-icon ui-icon ui-icon-closethick"
+        />
+        <span
+          className="ui-button-icon-space"
+        />
+      </button>
+    </div>
+    <div
+      className="ui-front ui-dialog-content ui-widget-content"
+      style={
+        Object {
+          "width": "auto",
+        }
+      }
+    >
+      <div>
+        <span
+          style={
+            Object {
+              "color": "red",
+              "fontSize": 15,
+            }
+          }
+        >
+          ERROR: 
+          Value of Type is incorrect!
+        </span>
+      </div>
+      <label
+        className="label"
+      >
+        Label:
+        <input
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "-webkit-fill-available",
+            }
+          }
+          type="text"
+          value="123"
+        />
+      </label>
+      <div
+        className="inputForm"
+      >
+        <label>
+          Type
+        </label>
+        <div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="text"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="text"
+            />
+            <label
+              htmlFor="text"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Textfiled
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="checkbox"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="checkbox"
+            />
+            <label
+              htmlFor="checkbox"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Checkbox
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="select"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="select"
+            />
+            <label
+              htmlFor="select"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Select
+            </label>
+          </div>
+          <div
+            className="gi-defaults-dummy-random-string-0 fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginLeft": "15px",
+                "marginRight": "10px",
+                "textAlign": "center",
+              }
+            }
+          >
+            <input
+              checked={false}
+              id="radios"
+              name="type"
+              onChange={[Function]}
+              type="radio"
+              value="radios"
+            />
+            <label
+              htmlFor="radios"
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginTop": "-1px",
+                }
+              }
+            >
+              Radios
+            </label>
+          </div>
+        </div>
+      </div>
+      <textarea
+        className="text-area"
+        onChange={[Function]}
+        style={
+          Object {
+            "height": "50px",
+            "width": "-webkit-fill-available",
+          }
+        }
+        value="{\\"label\\":\\"123\\",\\"type\\":\\"incorrectType\\"}"
+      />
+    </div>
+    <div
+      className="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"
+    >
+      <button
+        className="button button--primary js-form-submit form-submit ui-button ui-corner-all ui-widget"
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Basic test fof showing overlay Open overlay and input value of label 1`] = `
 <div>
   <div>
