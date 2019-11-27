@@ -94,12 +94,14 @@ export default function inputReducer(state = initialState, action) {
       } catch (e) {
         errorJSON = true;
       }
+      if (action.jsonString.trim() === "") {
+        errorJSON = false;
+      }
       const errorType = !isValidType(parsedValues.type);
       const errorOptions =
         parsedValues.type === "select" || parsedValues.type === "radios"
           ? !isValidOptions(parsedValues.options)
           : false;
-
       let errors = [];
       if (errorJSON) {
         errors.push(errorMessages["errorJSON"]);
@@ -110,7 +112,6 @@ export default function inputReducer(state = initialState, action) {
       if (errorOptions) {
         errors.push(errorMessages["errorOptions"]);
       }
-
       return {
         ...state,
         options: parsedValues.hasOwnProperty("options")

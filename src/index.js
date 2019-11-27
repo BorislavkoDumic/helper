@@ -54,7 +54,6 @@ class JsonSelectionHelper {
   callRender = event => {
     this.formElement.style.display = "block";
     this.overlayElement.style.display = "block";
-
     ReactDOM.render(
       <App
         inputValue={event.target.value}
