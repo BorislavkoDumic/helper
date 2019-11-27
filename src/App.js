@@ -11,9 +11,8 @@ const store = createStore(
 );
 
 function App(props) {
-  if (props.inputValue) {
-    store.dispatch(setValues(props.inputValue));
-  }
+  store.dispatch(setValues(props.inputValue));
+
   return (
     <Provider store={store}>
       <Input changeTextfield={props.onChange} closeForm={props.closeForm} />
